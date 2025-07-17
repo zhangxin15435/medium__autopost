@@ -1,0 +1,29 @@
+{
+    "title": "您的文章标题",
+    "subtitle": "文章副标题（可选）",
+    "content": "这里是您的文章正文内容。\n\n您可以使用Markdown格式：\n\n## 二级标题\n\n### 三级标题\n\n**粗体文字**\n\n*斜体文字*\n\n- 列表项1\n- 列表项2\n- 列表项3\n\n> 这是引用文字\n\n```javascript\n// 这是代码块\nconst example = 'Hello World';\nconsole.log(example);\n```\n\n[这是链接](https://example.com)\n\n记得在文章末尾添加您的个人签名或相关链接。",
+    "tags": [
+        "技术",
+        "编程",
+        "Medium",
+        "自动化",
+        "教程"
+    ],
+    "scheduledTime": "2024-12-13T09:00:00.000Z",
+    "status": "pending",
+    "author": {
+        "name": "您的姓名",
+        "bio": "您的简介"
+    },
+    "metadata": {
+        "category": "技术文章",
+        "language": "zh-CN",
+        "readTime": "5分钟",
+        "difficulty": "中级"
+    },
+    "settings": {
+        "allowResponses": true,
+        "allowHighlight": true,
+        "allowBookmark": true
+    }
+}

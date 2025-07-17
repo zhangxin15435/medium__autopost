@@ -1,0 +1,32 @@
+{
+    "version": 2,
+    "builds": [
+        {
+            "src": "api/**/*.js",
+            "use": "@vercel/node"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/api/(.*)",
+            "dest": "/api/$1"
+        }
+    ],
+    "functions": {
+        "api/publish.js": {
+            "maxDuration": 300
+        },
+        "api/cron-publish.js": {
+            "maxDuration": 300
+        }
+    },
+    "crons": [
+        {
+            "path": "/api/cron-publish",
+            "schedule": "0 9 * * *"
+        }
+    ],
+    "env": {
+        "NODE_ENV": "production"
+    }
+}

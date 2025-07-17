@@ -1,0 +1,21 @@
+{
+  "title": "真正发布测试：修复草稿问题",
+  "subtitle": "确保文章真正发布到Medium而不是仅保存为草稿",
+  "content": "这篇文章用于测试修复后的发布系统。\n\n## 修复的问题\n\n之前的系统错误地将草稿保存识别为发布成功：\n- URL包含`/edit`实际上是草稿\n- 真正发布的URL不应包含`/edit`\n- 需要点击\"Publish now\"而不是草稿保存按钮\n\n## 修复方案\n\n### 1. URL检测修正\n- 只有`/p/xxxxx`（无`/edit`）才是真正发布\n- `/p/xxxxx/edit`是草稿保存\n\n### 2. 发布按钮精确识别\n- 专门查找`publishConfirmButton`\n- 确保点击\"Publish now\"按钮\n- 避免点击草稿保存按钮\n\n### 3. 发布状态验证\n- 严格验证URL变化\n- 确认真正的发布状态\n\n## 测试目标\n\n如果这篇文章能够真正发布（而不是保存为草稿），说明修复成功。\n\n让我们验证真正的发布功能！",
+  "tags": [
+    "发布测试",
+    "修复验证",
+    "Medium自动化"
+  ],
+  "scheduledTime": "2025-07-16T13:15:00.000Z",
+  "status": "pending",
+  "fileName": "real-publish-test.json",
+  "filePath": "D:\\kaifa\\medium__autopost\\articles\\drafts\\real-publish-test.json",
+  "publishResult": {
+    "success": true,
+    "title": "真正发布测试：修复草稿问题",
+    "url": "https://medium.com/@contextspace/medium%E8%80%8C%E4%B8%8D%E6%98%AF%E4%BB%85%E4%BF%9D%E5%AD%98%E4%B8%BA%E8%8D%89%E7%A8%BF-ec5cfa8f8d8d",
+    "publishedAt": "2025-07-16T13:20:59.278Z"
+  },
+  "publishedAt": "2025-07-16T13:20:59.404Z"
+}

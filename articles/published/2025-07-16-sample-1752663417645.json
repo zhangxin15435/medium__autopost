@@ -1,0 +1,21 @@
+{
+  "title": "我的第一篇自动发布文章",
+  "subtitle": "使用Vercel + Puppeteer实现Medium自动发布",
+  "content": "这是一篇通过自动化系统发布的示例文章。\n\n## 功能特点\n\n1. **自动化发布** - 无需手动操作\n2. **定时任务** - 按预设时间发布\n3. **标签管理** - 自动添加相关标签\n\n## 技术栈\n\n- Vercel - 无服务器部署平台\n- Puppeteer - 浏览器自动化工具\n- Node.js - 后端运行环境\n\n感谢您的阅读！这个系统让内容创作者可以专注于写作，而不用担心发布的时间安排。",
+  "tags": [
+    "技术",
+    "自动化",
+    "Medium"
+  ],
+  "scheduledTime": "2025-07-16T10:57:57.645Z",
+  "status": "pending",
+  "fileName": "sample-1752663417645.json",
+  "filePath": "D:\\kaifa\\medium__autopost\\articles\\drafts\\sample-1752663417645.json",
+  "publishResult": {
+    "success": true,
+    "title": "我的第一篇自动发布文章",
+    "url": "https://medium.com/new-story",
+    "publishedAt": "2025-07-16T11:32:27.581Z"
+  },
+  "publishedAt": "2025-07-16T11:32:27.706Z"
+}

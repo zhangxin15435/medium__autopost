@@ -1,0 +1,22 @@
+{
+  "title": "闪电速度发布：Medium自动化的极限突破",
+  "subtitle": "零延迟输入，瞬间发布的终极性能测试",
+  "content": "这篇文章将验证我们的闪电速度发布系统。\n\n## 终极优化\n\n### 性能参数\n- 打字延迟：0ms（物理极限）\n- 等待时间：几乎全部取消\n- 输入模式：瞬间输入\n- 预期总时间：60-90秒\n\n### 优化清单\n✅ 取消内容输入间隔\n✅ 零延迟打字\n✅ 取消triggerContentEvents等待\n✅ 优化发布按钮启用时间\n✅ 闪电模式全面启用\n\n## 技术实现\n\n使用delay:0的极限输入模式，配合最小化的等待时间，实现接近物理极限的发布速度。\n\n## 测试目标\n\n如果这篇文章能在90秒内发布完成，就证明我们的系统达到了真正的极限性能。\n\n让我们见证闪电般的发布速度！",
+  "tags": [
+    "闪电发布",
+    "极限性能",
+    "自动化",
+    "Medium"
+  ],
+  "scheduledTime": "2025-07-16T13:00:00.000Z",
+  "status": "pending",
+  "fileName": "lightning-speed-test.json",
+  "filePath": "D:\\kaifa\\medium__autopost\\articles\\drafts\\lightning-speed-test.json",
+  "publishResult": {
+    "success": true,
+    "title": "闪电速度发布：Medium自动化的极限突破",
+    "url": "https://medium.com/p/0b1ccafe7c2c/edit",
+    "publishedAt": "2025-07-16T13:09:05.144Z"
+  },
+  "publishedAt": "2025-07-16T13:09:05.266Z"
+}
