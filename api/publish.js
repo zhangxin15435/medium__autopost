@@ -35,7 +35,7 @@ module.exports = async (req, res) => {
         }
 
         // 解析请求数据
-        const { action, article, immediate = false } = req.body;
+        const { action, article, immediate = false, enhanceWithAI = false } = req.body;
 
         if (!action) {
             return ResponseUtils.vercelResponse(
@@ -48,7 +48,7 @@ module.exports = async (req, res) => {
         // 处理不同的操作
         switch (action) {
             case 'publish':
-                return await handlePublish(req, res, article, immediate);
+                return await handlePublish(req, res, article, immediate, enhanceWithAI);
 
             case 'schedule':
                 return await handleSchedule(req, res, article);
@@ -81,7 +81,7 @@ module.exports = async (req, res) => {
 /**
  * 处理立即发布
  */
-async function handlePublish(req, res, article, immediate) {
+async function handlePublish(req, res, article, immediate, enhanceWithAI = false) {
     try {
         if (!article) {
             return ResponseUtils.vercelResponse(
@@ -114,8 +114,40 @@ async function handlePublish(req, res, article, immediate) {
             // 立即发布
             logger.info(`开始立即发布文章: ${article.title}`);
 
+            let finalArticle = article;
+
+            // 如果用户要求AI增强，则先进行增强
+            if (enhanceWithAI) {
+                logger.info('用户要求进行AI增强，开始增强处理...');
+                try {
+                    const OpenAIService = require('../lib/openai-service');
+                    const openaiService = new OpenAIService({
+                        apiKey: process.env.OPENAI_API_KEY,
+                        baseURL: process.env.OPENAI_BASE_URL
+                    });
+
+                    const enhancedData = await openaiService.enhanceArticle(article);
+                    finalArticle = {
+                        ...article,
+                        ...enhancedData,
+                        originalContent: article.content // 保存原始内容
+                    };
+
+                    if (enhancedData.aiEnhanced) {
+                        logger.info('✅ AI增强成功');
+                    } else {
+                        logger.warn('⚠️ AI增强失败，使用原始内容');
+                    }
+                } catch (aiError) {
+                    logger.error('AI增强出错:', aiError.message);
+                    logger.info('继续使用原始文章内容发布');
+                }
+            } else {
+                logger.info('跳过AI增强（用户未要求）');
+            }
+
             const publisher = new MediumPublisher();
-            const publishResult = await publisher.publishFlow(article);
+            const publishResult = await publisher.publishFlow(finalArticle);
 
             logger.info(`文章《${article.title}》发布成功`);
 

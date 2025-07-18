@@ -1,23 +1,21 @@
 {
     "version": 2,
-    "builds": [
-        {
-            "src": "api/**/*.js",
-            "use": "@vercel/node"
-        }
-    ],
-    "routes": [
-        {
-            "src": "/api/(.*)",
-            "dest": "/api/$1"
-        }
-    ],
     "functions": {
         "api/publish.js": {
-            "maxDuration": 300
+            "maxDuration": 300,
+            "memory": 1024
         },
         "api/cron-publish.js": {
-            "maxDuration": 300
+            "maxDuration": 300,
+            "memory": 1024
+        },
+        "api/batch-upload.js": {
+            "maxDuration": 300,
+            "memory": 1024
+        },
+        "api/articles.js": {
+            "maxDuration": 60,
+            "memory": 512
         }
     },
     "crons": [
@@ -27,6 +25,8 @@
         }
     ],
     "env": {
-        "NODE_ENV": "production"
+        "NODE_ENV": "production",
+        "PUPPETEER_SKIP_CHROMIUM_DOWNLOAD": "true",
+        "PUPPETEER_EXECUTABLE_PATH": "/usr/bin/google-chrome-stable"
     }
 }

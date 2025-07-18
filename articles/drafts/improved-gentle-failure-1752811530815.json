@@ -1,0 +1,14 @@
+{
+  "timestamp": "2025-07-18T04:05:30.815Z",
+  "error": "所有发布方法都失败了",
+  "method": "improved-gentle",
+  "status": "failed",
+  "context": {
+    "errorType": "other",
+    "improvements_attempted": [
+      "简化GraphQL查询",
+      "多种后备方法",
+      "更好的错误处理"
+    ]
+  }
+}

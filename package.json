@@ -19,20 +19,27 @@
         "env:add": "vercel env add",
         "lint": "echo 'No linting configured'",
         "clean": "rm -rf .vercel .cache logs/* articles/drafts/* articles/published/*",
-            "cookie:extract": "node scripts/cookie-helper.js extract",
-    "cookie:force": "node scripts/cookie-helper.js extract-force",
-    "cookie:test": "node scripts/cookie-helper.js test",
-    "cookie:info": "node scripts/cookie-helper.js info",
-    "cookie:clear": "node scripts/cookie-helper.js clear",
-    "debug": "node scripts/debug-publish.js"
+        "cookie:extract": "node scripts/cookie-helper.js extract",
+        "cookie:force": "node scripts/cookie-helper.js extract-force",
+        "cookie:test": "node scripts/cookie-helper.js test",
+        "cookie:info": "node scripts/cookie-helper.js info",
+        "cookie:clear": "node scripts/cookie-helper.js clear",
+        "debug": "node scripts/debug-publish.js"
     },
     "dependencies": {
-        "puppeteer": "^21.5.2",
-        "puppeteer-core": "^21.5.2",
-        "fs-extra": "^11.2.0",
+        "axios": "^1.10.0",
+        "csv-parser": "^3.2.0",
+        "csv-writer": "^1.6.0",
         "date-fns": "^2.30.0",
+        "dotenv": "^17.2.0",
+        "fs-extra": "^11.2.0",
         "lodash": "^4.17.21",
-        "marked": "^9.1.6"
+        "marked": "^9.1.6",
+        "multer": "^1.4.5-lts.1",
+        "openai": "^4.104.0",
+        "puppeteer": "^21.11.0",
+        "puppeteer-core": "^21.5.2",
+        "xlsx": "^0.18.5"
     },
     "devDependencies": {
         "@types/node": "^20.8.0"
