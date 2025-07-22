@@ -567,16 +567,24 @@
                         return;
                     }
 
-                    // 转换为文章格式
-                    const importedArticles = data.map((row, index) => ({
-                        id: Date.now() + index,
-                        title: row.title || row['标题'] || `导入文章${index + 1}`,
-                        subtitle: row.subtitle || row['副标题'] || '',
-                        content: row.content || row['内容'] || '',
-                        tags: (row.tags || row['标签'] || '').split(',').map(tag => tag.trim()).filter(tag => tag),
-                        createdAt: new Date().toISOString(),
-                        status: 'imported'
-                    }));
+                    // 转换为文章格式，支持多种CSV格式
+                    const importedArticles = data.map((row, index) => {
+                        // 尝试识别不同的列名格式
+                        const title = row.title || row['标题'] || row['主题'] || `导入文章${index + 1}`;
+                        const subtitle = row.subtitle || row['副标题'] || '';
+                        const content = row.content || row['内容'] || row['发布内容'] || row['markdown格式文本'] || '';
+                        const tagsField = row.tags || row['标签'] || '';
+
+                        return {
+                            id: Date.now() + index,
+                            title: title,
+                            subtitle: subtitle,
+                            content: content,
+                            tags: tagsField ? tagsField.split(/[,，]/).map(tag => tag.trim()).filter(tag => tag) : [],
+                            createdAt: new Date().toISOString(),
+                            status: 'imported'
+                        };
+                    });
 
                     // 添加到文章列表
                     articles = [...importedArticles, ...articles];
@@ -600,16 +608,52 @@
             reader.readAsText(currentFile);
         }
 
-        // 简单的CSV解析器
+        // 改进的CSV解析器，支持包含逗号和引号的内容
         function parseCSV(csvText) {
             const lines = csvText.split('\n').filter(line => line.trim());
             if (lines.length < 2) throw new Error('CSV文件格式不正确');
 
-            const headers = lines[0].split(',').map(h => h.trim().replace(/"/g, ''));
+            // 解析CSV行，处理引号内的逗号
+            function parseCSVLine(line) {
+                const result = [];
+                let current = '';
+                let inQuotes = false;
+
+                for (let i = 0; i < line.length; i++) {
+                    const char = line[i];
+                    const nextChar = line[i + 1];
+
+                    if (char === '"') {
+                        if (inQuotes && nextChar === '"') {
+                            // 转义的引号
+                            current += '"';
+                            i++; // 跳过下一个引号
+                        } else {
+                            // 切换引号状态
+                            inQuotes = !inQuotes;
+                        }
+                    } else if (char === ',' && !inQuotes) {
+                        // 字段分隔符
+                        result.push(current.trim());
+                        current = '';
+                    } else {
+                        current += char;
+                    }
+                }
+
+                // 添加最后一个字段
+                result.push(current.trim());
+
+                return result;
+            }
+
+            const headers = parseCSVLine(lines[0]);
             const data = [];
 
             for (let i = 1; i < lines.length; i++) {
-                const values = lines[i].split(',').map(v => v.trim().replace(/"/g, ''));
+                if (!lines[i].trim()) continue; // 跳过空行
+
+                const values = parseCSVLine(lines[i]);
                 const row = {};
                 headers.forEach((header, index) => {
                     row[header] = values[index] || '';
@@ -631,9 +675,9 @@
 
         // 下载模板
         function downloadTemplate(format) {
-            const csvContent = `title,subtitle,content,tags,scheduledTime
-"示例文章标题","示例副标题","这是文章内容...","技术,编程,自动化","2024-12-20T09:00:00.000Z"
-"第二篇文章","副标题2","更多内容...","教程,指南","2024-12-21T10:00:00.000Z"`;
+            const csvContent = `主题,副标题,发布内容,标签
+"示例文章标题","示例副标题","这是文章内容...","技术,编程,自动化"
+"第二篇文章","副标题2","更多内容...","教程,指南"`;
 
             const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
             const link = document.createElement('a');
