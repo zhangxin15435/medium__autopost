@@ -331,6 +331,88 @@
                 transform: rotate(360deg);
             }
         }
+
+        /* 状态标签样式 */
+        .status-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            color: white;
+        }
+
+        .status-pending {
+            background-color: #f59e0b;
+        }
+
+        .status-imported {
+            background-color: #3b82f6;
+        }
+
+        .status-scheduled {
+            background-color: #8b5cf6;
+        }
+
+        .status-published {
+            background-color: #10b981;
+        }
+
+        .status-error {
+            background-color: #ef4444;
+        }
+
+        /* 文章内容预览 */
+        .article-content-preview {
+            margin: 10px 0;
+            font-size: 14px;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        /* 定时发布信息 */
+        .scheduled-info {
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #8b5cf6;
+            font-weight: 600;
+        }
+
+        /* 模态框样式 */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.show {
+            opacity: 1;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-actions {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 20px;
+            gap: 10px;
+        }
     </style>
 </head>
 
@@ -382,9 +464,10 @@
 
                     <div class="form-group">
                         <label for="publishMode">发布模式</label>
-                        <select id="publishMode" name="publishMode">
+                        <select id="publishMode" name="publishMode" onchange="toggleScheduleOptions()">
                             <option value="immediate">立即发布</option>
                             <option value="schedule">定时发布</option>
+                            <option value="manual">仅保存不发布</option>
                         </select>
                     </div>
 
@@ -394,7 +477,7 @@
                     </div>
 
                     <button type="submit" class="btn" id="publishBtn">
-                        🚀 发布文章
+                        💾 保存文章
                     </button>
                 </form>
             </div>
@@ -467,6 +550,7 @@
             initializeEventListeners();
             loadArticles();
             setInterval(updateStatus, 5000); // 每5秒更新状态
+            toggleScheduleOptions(); // 初始化发布模式选项
         });
 
         // 事件监听器
@@ -475,10 +559,7 @@
             document.getElementById('articleForm').addEventListener('submit', handleArticleSubmit);
 
             // 发布模式切换
-            document.getElementById('publishMode').addEventListener('change', function () {
-                const scheduleGroup = document.getElementById('scheduleGroup');
-                scheduleGroup.style.display = this.value === 'schedule' ? 'block' : 'none';
-            });
+            document.getElementById('publishMode').addEventListener('change', toggleScheduleOptions);
 
             // 文件上传
             const fileUpload = document.getElementById('fileUpload');
@@ -499,44 +580,99 @@
 
             const btn = document.getElementById('publishBtn');
             const originalText = btn.innerHTML;
-            btn.innerHTML = '<span class="loading"></span> 发布中...';
+            btn.innerHTML = '<span class="loading"></span> 处理中...';
             btn.disabled = true;
 
             try {
-                const formData = new FormData(e.target);
-                const article = {
-                    title: formData.get('title'),
-                    subtitle: formData.get('subtitle'),
-                    content: formData.get('content'),
-                    tags: formData.get('tags').split(',').map(tag => tag.trim()).filter(tag => tag),
-                    scheduledTime: formData.get('publishMode') === 'schedule' ?
-                        new Date(formData.get('scheduleTime')).toISOString() : null
-                };
+                const title = document.getElementById('title').value;
+                const subtitle = document.getElementById('subtitle').value;
+                const content = document.getElementById('content').value;
+                const tags = document.getElementById('tags').value;
+                const publishMode = document.getElementById('publishMode').value;
+                const scheduleTime = document.getElementById('scheduleTime').value;
 
-                const response = await fetch('/api/publish', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        action: 'publish',
-                        article: article,
-                        immediate: formData.get('publishMode') === 'immediate'
-                    })
-                });
-
-                const result = await response.json();
-
-                if (result.success) {
-                    showNotification('文章发布成功！', 'success');
-                    e.target.reset();
-                    loadArticles();
-                } else {
-                    throw new Error(result.message || '发布失败');
+                if (!title || !content) {
+                    throw new Error('标题和内容不能为空');
                 }
 
+                const article = {
+                    id: Date.now().toString(),
+                    title,
+                    subtitle,
+                    content,
+                    tags: tags.split(',').map(tag => tag.trim()).filter(tag => tag),
+                    createdAt: new Date().toISOString(),
+                    status: 'pending'
+                };
+
+                // 根据发布模式处理
+                if (publishMode === 'immediate') {
+                    // 保存并立即发布
+                    articles.unshift(article);
+                    localStorage.setItem('medium-articles', JSON.stringify(articles));
+
+                    showNotification('文章已保存，正在发布...', 'info');
+
+                    // 调用发布API
+                    const response = await fetch('/api/publish', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            action: 'publish',
+                            articleId: article.id,
+                            immediate: true
+                        })
+                    });
+
+                    const result = await response.json();
+
+                    if (result.success) {
+                        // 更新文章状态
+                        const articleIndex = articles.findIndex(a => a.id === article.id);
+                        if (articleIndex !== -1) {
+                            articles[articleIndex].status = 'published';
+                            if (result.publishedUrl) {
+                                articles[articleIndex].publishedUrl = result.publishedUrl;
+                            }
+                            localStorage.setItem('medium-articles', JSON.stringify(articles));
+                        }
+
+                        showNotification('文章已保存并发布成功！', 'success');
+                    } else {
+                        throw new Error(result.message || '发布失败');
+                    }
+                } else if (publishMode === 'schedule') {
+                    // 保存为定时发布
+                    if (!scheduleTime) {
+                        throw new Error('请选择定时发布时间');
+                    }
+
+                    article.scheduledTime = new Date(scheduleTime).toISOString();
+                    article.status = 'scheduled';
+
+                    articles.unshift(article);
+                    localStorage.setItem('medium-articles', JSON.stringify(articles));
+
+                    showNotification('文章已保存，并设置为定时发布！', 'success');
+                } else {
+                    // 仅保存
+                    articles.unshift(article);
+                    localStorage.setItem('medium-articles', JSON.stringify(articles));
+
+                    showNotification('文章保存成功！', 'success');
+                }
+
+                // 重置表单
+                e.target.reset();
+                toggleScheduleOptions();
+
+                // 刷新文章列表
+                loadArticles();
+
             } catch (error) {
-                showNotification('发布失败: ' + error.message, 'error');
+                showNotification('操作失败: ' + error.message, 'error');
             } finally {
                 btn.innerHTML = originalText;
                 btn.disabled = false;
@@ -700,23 +836,82 @@
                 return;
             }
 
-            container.innerHTML = articles.map(article => `
-                <div class="article-card">
-                    <div class="article-title">${article.title}</div>
-                    <div class="article-meta">
-                        状态: ${getStatusText(article.status)} | 
-                        创建时间: ${new Date(article.createdAt).toLocaleString()}
-                    </div>
-                    <div class="article-actions">
-                        <button class="btn btn-small" onclick="publishArticle('${article.id}')">
-                            🚀 发布
+            container.innerHTML = articles.map(article => {
+                // 根据文章状态决定显示哪些按钮
+                let actionButtons = '';
+
+                if (article.status === 'pending' || article.status === 'imported') {
+                    // 待发布状态，显示发布选项
+                    actionButtons = `
+                        <button class="btn btn-small" onclick="publishArticle('${article.id}', true)">
+                            🚀 立即发布
+                        </button>
+                        <button class="btn btn-small" onclick="scheduleArticle('${article.id}')">
+                            ⏰ 定时发布
+                        </button>
+                        <button class="btn btn-secondary btn-small" onclick="editArticle('${article.id}')">
+                            ✏️ 编辑
                         </button>
                         <button class="btn btn-secondary btn-small" onclick="deleteArticle('${article.id}')">
                             🗑️ 删除
                         </button>
+                    `;
+                } else if (article.status === 'scheduled') {
+                    // 已定时发布状态
+                    const scheduleTime = article.scheduledTime ? new Date(article.scheduledTime).toLocaleString() : '未知时间';
+                    actionButtons = `
+                        <div class="scheduled-info">定时发布: ${scheduleTime}</div>
+                        <button class="btn btn-small" onclick="publishArticle('${article.id}', true)">
+                            🚀 立即发布
+                        </button>
+                        <button class="btn btn-secondary btn-small" onclick="cancelSchedule('${article.id}')">
+                            ❌ 取消定时
+                        </button>
+                        <button class="btn btn-secondary btn-small" onclick="deleteArticle('${article.id}')">
+                            🗑️ 删除
+                        </button>
+                    `;
+                } else if (article.status === 'published') {
+                    // 已发布状态
+                    actionButtons = `
+                        <button class="btn btn-secondary btn-small" onclick="viewPublished('${article.id}')">
+                            👁️ 查看
+                        </button>
+                        <button class="btn btn-secondary btn-small" onclick="deleteArticle('${article.id}')">
+                            🗑️ 删除
+                        </button>
+                    `;
+                } else {
+                    // 其他状态
+                    actionButtons = `
+                        <button class="btn btn-small" onclick="publishArticle('${article.id}', true)">
+                            🚀 重新发布
+                        </button>
+                        <button class="btn btn-secondary btn-small" onclick="editArticle('${article.id}')">
+                            ✏️ 编辑
+                        </button>
+                        <button class="btn btn-secondary btn-small" onclick="deleteArticle('${article.id}')">
+                            🗑️ 删除
+                        </button>
+                    `;
+                }
+
+                return `
+                <div class="article-card">
+                    <div class="article-title">${article.title}</div>
+                    <div class="article-meta">
+                        状态: <span class="status-badge status-${article.status}">${getStatusText(article.status)}</span> | 
+                        创建时间: ${new Date(article.createdAt).toLocaleString()}
+                    </div>
+                    <div class="article-content-preview">
+                        ${article.content ? article.content.substring(0, 100) + '...' : '无内容'}
+                    </div>
+                    <div class="article-actions">
+                        ${actionButtons}
                     </div>
                 </div>
-            `).join('');
+                `;
+            }).join('');
         }
 
         // 获取状态文本
@@ -730,9 +925,101 @@
             return statusMap[status] || status;
         }
 
+        // 切换定时发布选项
+        function toggleScheduleOptions() {
+            const publishMode = document.getElementById('publishMode').value;
+            const scheduleGroup = document.getElementById('scheduleGroup');
+
+            if (publishMode === 'schedule') {
+                scheduleGroup.style.display = 'block';
+                // 设置默认时间为明天此刻
+                const tomorrow = new Date();
+                tomorrow.setDate(tomorrow.getDate() + 1);
+                document.getElementById('scheduleTime').value = tomorrow.toISOString().slice(0, 16);
+            } else {
+                scheduleGroup.style.display = 'none';
+            }
+
+            // 更新按钮文本
+            const publishBtn = document.getElementById('publishBtn');
+            if (publishMode === 'immediate') {
+                publishBtn.textContent = '💾 保存并立即发布';
+            } else if (publishMode === 'schedule') {
+                publishBtn.textContent = '💾 保存并定时发布';
+            } else {
+                publishBtn.textContent = '💾 仅保存文章';
+            }
+        }
+
+        // 处理文章表单提交
+        function handleArticleSubmit(e) {
+            e.preventDefault();
+
+            const title = document.getElementById('title').value;
+            const subtitle = document.getElementById('subtitle').value;
+            const content = document.getElementById('content').value;
+            const tags = document.getElementById('tags').value;
+            const publishMode = document.getElementById('publishMode').value;
+            const scheduleTime = document.getElementById('scheduleTime').value;
+
+            if (!title || !content) {
+                showNotification('标题和内容不能为空', 'error');
+                return;
+            }
+
+            const article = {
+                id: Date.now().toString(),
+                title,
+                subtitle,
+                content,
+                tags: tags.split(',').map(tag => tag.trim()).filter(tag => tag),
+                createdAt: new Date().toISOString(),
+                status: 'pending'
+            };
+
+            // 根据发布模式设置状态
+            if (publishMode === 'immediate') {
+                saveAndPublishArticle(article, true);
+            } else if (publishMode === 'schedule') {
+                if (!scheduleTime) {
+                    showNotification('请选择定时发布时间', 'error');
+                    return;
+                }
+                article.scheduledTime = new Date(scheduleTime).toISOString();
+                article.status = 'scheduled';
+                saveArticle(article);
+            } else {
+                // 仅保存
+                saveArticle(article);
+            }
+        }
+
+        // 保存文章
+        function saveArticle(article) {
+            // 添加到本地存储
+            articles.unshift(article);
+            localStorage.setItem('medium-articles', JSON.stringify(articles));
+
+            // 更新UI
+            showNotification('文章保存成功！', 'success');
+            document.getElementById('articleForm').reset();
+            loadArticles();
+        }
+
+        // 保存并发布文章
+        async function saveAndPublishArticle(article, immediate = true) {
+            // 先保存
+            saveArticle(article);
+
+            // 然后发布
+            await publishArticle(article.id, immediate);
+        }
+
         // 发布单篇文章
-        async function publishArticle(articleId) {
+        async function publishArticle(articleId, immediate = true) {
             try {
+                showNotification('正在发布文章...', 'info');
+
                 const response = await fetch('/api/publish', {
                     method: 'POST',
                     headers: {
@@ -741,20 +1028,115 @@
                     body: JSON.stringify({
                         action: 'publish',
                         articleId: articleId,
-                        immediate: true
+                        immediate: immediate
                     })
                 });
 
                 const result = await response.json();
 
                 if (result.success) {
-                    showNotification('文章发布成功！', 'success');
+                    // 更新文章状态
+                    const articleIndex = articles.findIndex(a => a.id === articleId);
+                    if (articleIndex !== -1) {
+                        articles[articleIndex].status = immediate ? 'published' : 'scheduled';
+                        if (result.publishedUrl) {
+                            articles[articleIndex].publishedUrl = result.publishedUrl;
+                        }
+                        localStorage.setItem('medium-articles', JSON.stringify(articles));
+                    }
+
+                    showNotification(immediate ? '文章发布成功！' : '文章已加入定时发布队列！', 'success');
                     loadArticles();
                 } else {
                     throw new Error(result.message || '发布失败');
                 }
             } catch (error) {
                 showNotification('发布失败: ' + error.message, 'error');
+            }
+        }
+
+        // 定时发布文章
+        function scheduleArticle(articleId) {
+            // 创建日期选择对话框
+            const dialog = document.createElement('div');
+            dialog.className = 'modal';
+            dialog.innerHTML = `
+                <div class="modal-content">
+                    <h3>设置定时发布</h3>
+                    <div class="form-group">
+                        <label for="modalScheduleTime">发布时间</label>
+                        <input type="datetime-local" id="modalScheduleTime">
+                    </div>
+                    <div class="modal-actions">
+                        <button class="btn" onclick="confirmSchedule('${articleId}')">确认</button>
+                        <button class="btn btn-secondary" onclick="closeModal()">取消</button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(dialog);
+
+            // 设置默认时间为明天此刻
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            document.getElementById('modalScheduleTime').value = tomorrow.toISOString().slice(0, 16);
+
+            // 显示对话框
+            setTimeout(() => dialog.classList.add('show'), 10);
+        }
+
+        // 确认定时发布
+        function confirmSchedule(articleId) {
+            const scheduleTime = document.getElementById('modalScheduleTime').value;
+            if (!scheduleTime) {
+                showNotification('请选择定时发布时间', 'error');
+                return;
+            }
+
+            // 更新文章状态
+            const articleIndex = articles.findIndex(a => a.id === articleId);
+            if (articleIndex !== -1) {
+                articles[articleIndex].status = 'scheduled';
+                articles[articleIndex].scheduledTime = new Date(scheduleTime).toISOString();
+                localStorage.setItem('medium-articles', JSON.stringify(articles));
+            }
+
+            showNotification('文章已设置为定时发布！', 'success');
+            closeModal();
+            loadArticles();
+        }
+
+        // 取消定时发布
+        function cancelSchedule(articleId) {
+            if (!confirm('确定要取消定时发布吗？')) return;
+
+            // 更新文章状态
+            const articleIndex = articles.findIndex(a => a.id === articleId);
+            if (articleIndex !== -1) {
+                articles[articleIndex].status = 'pending';
+                delete articles[articleIndex].scheduledTime;
+                localStorage.setItem('medium-articles', JSON.stringify(articles));
+            }
+
+            showNotification('已取消定时发布！', 'info');
+            loadArticles();
+        }
+
+        // 关闭模态框
+        function closeModal() {
+            const modal = document.querySelector('.modal');
+            if (modal) {
+                modal.classList.remove('show');
+                setTimeout(() => modal.remove(), 300);
+            }
+        }
+
+        // 查看已发布文章
+        function viewPublished(articleId) {
+            const article = articles.find(a => a.id === articleId);
+            if (article && article.publishedUrl) {
+                window.open(article.publishedUrl, '_blank');
+            } else {
+                showNotification('未找到发布链接', 'error');
             }
         }
 
