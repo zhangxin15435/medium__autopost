@@ -1,0 +1,13 @@
+0 verbose cli C:\nvm4w\nodejs\node.exe C:\Users\22243\AppData\Local\nvm\v22.16.0\node_modules\npm\bin\npm-cli.js
+1 info using npm@10.9.2
+2 info using node@v22.16.0
+3 silly config load:file:C:\Users\22243\AppData\Local\nvm\v22.16.0\node_modules\npm\npmrc
+4 silly config load:file:D:\kaifa\medium__autopost\.npmrc
+5 silly config load:file:C:\Users\22243\.npmrc
+6 silly config load:file:C:\Program Files\nodejs\node_global\etc\npmrc
+7 verbose title npm exec vercel ls medium-autopost
+8 verbose argv "exec" "--" "vercel" "ls" "medium-autopost"
+9 verbose logfile logs-max:10 dir:D:\kaifa\medium__autopost\.npm-cache\_logs\2025-07-18T11_19_59_850Z-
+10 verbose logfile D:\kaifa\medium__autopost\.npm-cache\_logs\2025-07-18T11_19_59_850Z-debug-0.log
+11 silly logfile start cleaning logs, removing 1 files
+12 silly logfile done cleaning log files

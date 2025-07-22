@@ -7,24 +7,14 @@
         "dev": "vercel dev",
         "build": "echo 'Build completed'",
         "start": "node index.js",
-        "test": "node test/test.js",
-        "test:quick": "node test/test.js quick",
-        "test:performance": "node test/test.js performance",
+        "test": "node index.js test",
         "setup": "node scripts/setup.js",
         "publish": "node index.js publish",
         "status": "node index.js status",
         "sample": "node index.js sample",
         "deploy": "vercel --prod",
-        "logs": "vercel logs",
-        "env:add": "vercel env add",
-        "lint": "echo 'No linting configured'",
-        "clean": "rm -rf .vercel .cache logs/* articles/drafts/* articles/published/*",
-        "cookie:extract": "node scripts/cookie-helper.js extract",
-        "cookie:force": "node scripts/cookie-helper.js extract-force",
-        "cookie:test": "node scripts/cookie-helper.js test",
-        "cookie:info": "node scripts/cookie-helper.js info",
-        "cookie:clear": "node scripts/cookie-helper.js clear",
-        "debug": "node scripts/debug-publish.js"
+        "deploy:fast": "vercel --prod --force",
+        "logs": "vercel logs"
     },
     "dependencies": {
         "axios": "^1.10.0",
@@ -35,17 +25,16 @@
         "fs-extra": "^11.2.0",
         "lodash": "^4.17.21",
         "marked": "^9.1.6",
-        "multer": "^1.4.5-lts.1",
+        "multer": "^2.0.1",
         "openai": "^4.104.0",
-        "puppeteer": "^21.11.0",
-        "puppeteer-core": "^21.5.2",
+        "puppeteer": "^22.8.2",
         "xlsx": "^0.18.5"
     },
     "devDependencies": {
         "@types/node": "^20.8.0"
     },
     "engines": {
-        "node": ">=18.0.0"
+        "node": "22.x"
     },
     "keywords": [
         "medium",
@@ -57,14 +46,14 @@
         "publishing",
         "scheduler"
     ],
-    "author": "Medium AutoPost System",
+    "author": "Your Name",
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "https://github.com/your-username/medium-autopost.git"
+        "url": "https://github.com/your-username/medium-autopost"
     },
-    "bugs": {
-        "url": "https://github.com/your-username/medium-autopost/issues"
-    },
-    "homepage": "https://github.com/your-username/medium-autopost#readme"
+    "vercel": {
+        "buildCommand": "echo 'No build step required'",
+        "installCommand": "npm ci --only=production"
+    }
 }

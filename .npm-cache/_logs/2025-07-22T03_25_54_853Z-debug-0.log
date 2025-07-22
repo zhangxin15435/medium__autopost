@@ -1,0 +1,1047 @@
+0 verbose cli C:\nvm4w\nodejs\node.exe C:\nvm4w\nodejs\node_modules\npm\bin\npm-cli.js
+1 info using npm@10.9.2
+2 info using node@v22.16.0
+3 silly config load:file:C:\Users\22243\AppData\Local\nvm\v22.16.0\node_modules\npm\npmrc
+4 silly config load:file:C:\Users\22243\.npmrc
+5 silly config load:file:C:\Program Files\nodejs\node_global\etc\npmrc
+6 verbose title npm i vercel
+7 verbose argv "i" "--global" "vercel"
+8 verbose logfile logs-max:10 dir:D:\kaifa\medium__autopost\.npm-cache\_logs\2025-07-22T03_25_54_853Z-
+9 verbose logfile D:\kaifa\medium__autopost\.npm-cache\_logs\2025-07-22T03_25_54_853Z-debug-0.log
+10 silly packumentCache heap:4345298944 maxSize:1086324736 maxEntrySize:543162368
+11 silly logfile start cleaning logs, removing 1 files
+12 silly logfile done cleaning log files
+13 silly idealTree buildDeps
+14 silly fetch manifest vercel@*
+15 silly packumentCache full:https://registry.npmmirror.com/vercel cache-miss
+16 http fetch GET 200 https://registry.npmmirror.com/vercel 997ms (cache miss)
+17 silly packumentCache full:https://registry.npmmirror.com/vercel set size:816073 disposed:false
+18 silly placeDep ROOT vercel@44.5.0 OK for:  want: *
+19 silly fetch manifest jose@5.9.6
+20 silly packumentCache full:https://registry.npmmirror.com/jose cache-miss
+21 silly fetch manifest chokidar@4.0.0
+22 silly packumentCache full:https://registry.npmmirror.com/chokidar cache-miss
+23 silly fetch manifest @vercel/go@3.2.2
+24 silly packumentCache full:https://registry.npmmirror.com/@vercel%2fgo cache-miss
+25 silly fetch manifest @vercel/fun@1.1.6
+26 silly packumentCache full:https://registry.npmmirror.com/@vercel%2ffun cache-miss
+27 silly fetch manifest @vercel/blob@1.0.2
+28 silly packumentCache full:https://registry.npmmirror.com/@vercel%2fblob cache-miss
+29 silly fetch manifest @vercel/next@4.10.2
+30 silly packumentCache full:https://registry.npmmirror.com/@vercel%2fnext cache-miss
+31 silly fetch manifest @vercel/node@5.3.6
+32 silly packumentCache full:https://registry.npmmirror.com/@vercel%2fnode cache-miss
+33 silly fetch manifest @vercel/ruby@2.2.1
+34 silly packumentCache full:https://registry.npmmirror.com/@vercel%2fruby cache-miss
+35 silly fetch manifest @vercel/python@4.7.4
+36 silly packumentCache full:https://registry.npmmirror.com/@vercel%2fpython cache-miss
+37 silly fetch manifest @vercel/redwood@2.3.4
+38 silly packumentCache full:https://registry.npmmirror.com/@vercel%2fredwood cache-miss
+39 silly fetch manifest @vercel/hydrogen@1.2.3
+40 silly packumentCache full:https://registry.npmmirror.com/@vercel%2fhydrogen cache-miss
+41 silly fetch manifest @vercel/build-utils@10.6.7
+42 silly packumentCache full:https://registry.npmmirror.com/@vercel%2fbuild-utils cache-miss
+43 silly fetch manifest @vercel/static-build@2.7.16
+44 silly packumentCache full:https://registry.npmmirror.com/@vercel%2fstatic-build cache-miss
+45 silly fetch manifest @vercel/remix-builder@5.4.10
+46 silly packumentCache full:https://registry.npmmirror.com/@vercel%2fremix-builder cache-miss
+47 http fetch GET 200 https://registry.npmmirror.com/jose 412ms (cache miss)
+48 silly packumentCache full:https://registry.npmmirror.com/jose set size:179184 disposed:false
+49 http fetch GET 200 https://registry.npmmirror.com/@vercel%2ffun 466ms (cache miss)
+50 silly packumentCache full:https://registry.npmmirror.com/@vercel%2ffun set size:13941 disposed:false
+51 http fetch GET 200 https://registry.npmmirror.com/@vercel%2fstatic-build 520ms (cache miss)
+52 silly packumentCache full:https://registry.npmmirror.com/@vercel%2fstatic-build set size:223149 disposed:false
+53 http fetch GET 200 https://registry.npmmirror.com/chokidar 547ms (cache miss)
+54 silly packumentCache full:https://registry.npmmirror.com/chokidar set size:39278 disposed:false
+55 http fetch GET 200 https://registry.npmmirror.com/@vercel%2fremix-builder 547ms (cache miss)
+56 silly packumentCache full:https://registry.npmmirror.com/@vercel%2fremix-builder set size:50907 disposed:false
+57 http fetch GET 200 https://registry.npmmirror.com/@vercel%2fhydrogen 565ms (cache miss)
+58 silly packumentCache full:https://registry.npmmirror.com/@vercel%2fhydrogen set size:78234 disposed:false
+59 http fetch GET 200 https://registry.npmmirror.com/@vercel%2fpython 589ms (cache miss)
+60 silly packumentCache full:https://registry.npmmirror.com/@vercel%2fpython set size:163891 disposed:false
+61 http fetch GET 200 https://registry.npmmirror.com/@vercel%2fbuild-utils 598ms (cache miss)
+62 silly packumentCache full:https://registry.npmmirror.com/@vercel%2fbuild-utils set size:252509 disposed:false
+63 http fetch GET 200 https://registry.npmmirror.com/@vercel%2fnext 619ms (cache miss)
+64 silly packumentCache full:https://registry.npmmirror.com/@vercel%2fnext set size:262202 disposed:false
+65 http fetch GET 200 https://registry.npmmirror.com/@vercel%2fredwood 630ms (cache miss)
+66 silly packumentCache full:https://registry.npmmirror.com/@vercel%2fredwood set size:156755 disposed:false
+67 http fetch GET 200 https://registry.npmmirror.com/@vercel%2fgo 644ms (cache miss)
+68 silly packumentCache full:https://registry.npmmirror.com/@vercel%2fgo set size:160881 disposed:false
+69 http fetch GET 200 https://registry.npmmirror.com/@vercel%2fnode 1184ms (cache miss)
+70 silly packumentCache full:https://registry.npmmirror.com/@vercel%2fnode set size:262702 disposed:false
+71 http fetch GET 200 https://registry.npmmirror.com/@vercel%2fruby 4911ms (cache miss)
+72 silly packumentCache full:https://registry.npmmirror.com/@vercel%2fruby set size:152664 disposed:false
+73 http fetch GET 200 https://registry.npmmirror.com/@vercel%2fblob 5893ms (cache miss)
+74 silly packumentCache full:https://registry.npmmirror.com/@vercel%2fblob set size:110961 disposed:false
+75 silly placeDep node_modules/vercel @vercel/blob@1.0.2 OK for: vercel@44.5.0 want: 1.0.2
+76 silly placeDep node_modules/vercel @vercel/build-utils@10.6.7 OK for: vercel@44.5.0 want: 10.6.7
+77 silly placeDep node_modules/vercel @vercel/fun@1.1.6 OK for: vercel@44.5.0 want: 1.1.6
+78 silly placeDep node_modules/vercel @vercel/go@3.2.2 OK for: vercel@44.5.0 want: 3.2.2
+79 silly placeDep node_modules/vercel @vercel/hydrogen@1.2.3 OK for: vercel@44.5.0 want: 1.2.3
+80 silly placeDep node_modules/vercel @vercel/next@4.10.2 OK for: vercel@44.5.0 want: 4.10.2
+81 silly placeDep node_modules/vercel @vercel/node@5.3.6 OK for: vercel@44.5.0 want: 5.3.6
+82 silly placeDep node_modules/vercel @vercel/python@4.7.4 OK for: vercel@44.5.0 want: 4.7.4
+83 silly placeDep node_modules/vercel @vercel/redwood@2.3.4 OK for: vercel@44.5.0 want: 2.3.4
+84 silly placeDep node_modules/vercel @vercel/remix-builder@5.4.10 OK for: vercel@44.5.0 want: 5.4.10
+85 silly placeDep node_modules/vercel @vercel/ruby@2.2.1 OK for: vercel@44.5.0 want: 2.2.1
+86 silly placeDep node_modules/vercel @vercel/static-build@2.7.16 OK for: vercel@44.5.0 want: 2.7.16
+87 silly placeDep node_modules/vercel chokidar@4.0.0 OK for: vercel@44.5.0 want: 4.0.0
+88 silly placeDep node_modules/vercel jose@5.9.6 OK for: vercel@44.5.0 want: 5.9.6
+89 silly fetch manifest async-retry@^1.3.3
+90 silly packumentCache full:https://registry.npmmirror.com/async-retry cache-miss
+91 silly fetch manifest is-buffer@^2.0.5
+92 silly packumentCache full:https://registry.npmmirror.com/is-buffer cache-miss
+93 silly fetch manifest is-node-process@^1.2.0
+94 silly packumentCache full:https://registry.npmmirror.com/is-node-process cache-miss
+95 silly fetch manifest throttleit@^2.1.0
+96 silly packumentCache full:https://registry.npmmirror.com/throttleit cache-miss
+97 silly fetch manifest undici@^5.28.4
+98 silly packumentCache full:https://registry.npmmirror.com/undici cache-miss
+99 silly fetch manifest @tootallnate/once@2.0.0
+100 silly packumentCache full:https://registry.npmmirror.com/@tootallnate%2fonce cache-miss
+101 silly fetch manifest async-listen@1.2.0
+102 silly packumentCache full:https://registry.npmmirror.com/async-listen cache-miss
+103 silly fetch manifest debug@4.3.4
+104 silly packumentCache full:https://registry.npmmirror.com/debug cache-miss
+105 silly fetch manifest generic-pool@3.4.2
+106 silly packumentCache full:https://registry.npmmirror.com/generic-pool cache-miss
+107 silly fetch manifest micro@9.3.5-canary.3
+108 silly packumentCache full:https://registry.npmmirror.com/micro cache-miss
+109 silly fetch manifest ms@2.1.1
+110 silly packumentCache full:https://registry.npmmirror.com/ms cache-miss
+111 silly fetch manifest node-fetch@2.6.7
+112 silly packumentCache full:https://registry.npmmirror.com/node-fetch cache-miss
+113 silly fetch manifest path-match@1.2.4
+114 silly packumentCache full:https://registry.npmmirror.com/path-match cache-miss
+115 silly fetch manifest promisepipe@3.0.0
+116 silly packumentCache full:https://registry.npmmirror.com/promisepipe cache-miss
+117 silly fetch manifest semver@7.5.4
+118 silly packumentCache full:https://registry.npmmirror.com/semver cache-miss
+119 http fetch GET 200 https://registry.npmmirror.com/@tootallnate%2fonce 57ms (cache miss)
+120 silly packumentCache full:https://registry.npmmirror.com/@tootallnate%2fonce set size:3975 disposed:false
+121 silly fetch manifest stat-mode@0.3.0
+122 silly packumentCache full:https://registry.npmmirror.com/stat-mode cache-miss
+123 http fetch GET 200 https://registry.npmmirror.com/stat-mode 38ms (cache miss)
+124 silly packumentCache full:https://registry.npmmirror.com/stat-mode set size:4329 disposed:false
+125 silly fetch manifest stream-to-promise@2.2.0
+126 silly packumentCache full:https://registry.npmmirror.com/stream-to-promise cache-miss
+127 http fetch GET 200 https://registry.npmmirror.com/async-listen 359ms (cache miss)
+128 silly packumentCache full:https://registry.npmmirror.com/async-listen set size:10028 disposed:false
+129 silly fetch manifest tar@6.2.1
+130 silly packumentCache full:https://registry.npmmirror.com/tar cache-miss
+131 http fetch GET 200 https://registry.npmmirror.com/micro 360ms (cache miss)
+132 silly packumentCache full:https://registry.npmmirror.com/micro set size:30972 disposed:false
+133 silly fetch manifest tinyexec@0.3.2
+134 silly packumentCache full:https://registry.npmmirror.com/tinyexec cache-miss
+135 http fetch GET 200 https://registry.npmmirror.com/path-match 376ms (cache miss)
+136 silly packumentCache full:https://registry.npmmirror.com/path-match set size:3793 disposed:false
+137 silly fetch manifest tree-kill@1.2.2
+138 silly packumentCache full:https://registry.npmmirror.com/tree-kill cache-miss
+139 http fetch GET 200 https://registry.npmmirror.com/async-retry 381ms (cache miss)
+140 silly packumentCache full:https://registry.npmmirror.com/async-retry set size:10181 disposed:false
+141 silly fetch manifest uid-promise@1.0.0
+142 silly packumentCache full:https://registry.npmmirror.com/uid-promise cache-miss
+143 http fetch GET 200 https://registry.npmmirror.com/promisepipe 409ms (cache miss)
+144 silly packumentCache full:https://registry.npmmirror.com/promisepipe set size:3997 disposed:false
+145 silly fetch manifest xdg-app-paths@5.1.0
+146 silly packumentCache full:https://registry.npmmirror.com/xdg-app-paths cache-miss
+147 http fetch GET 200 https://registry.npmmirror.com/ms 415ms (cache updated)
+148 silly packumentCache full:https://registry.npmmirror.com/ms set size:12852 disposed:false
+149 silly fetch manifest yauzl-promise@2.1.3
+150 silly packumentCache full:https://registry.npmmirror.com/yauzl-promise cache-miss
+151 http fetch GET 200 https://registry.npmmirror.com/semver 422ms (cache updated)
+152 silly packumentCache full:https://registry.npmmirror.com/semver set size:43859 disposed:false
+153 silly fetch manifest @vercel/static-config@3.1.1
+154 silly packumentCache full:https://registry.npmmirror.com/@vercel%2fstatic-config cache-miss
+155 http fetch GET 200 https://registry.npmmirror.com/generic-pool 429ms (cache miss)
+156 silly packumentCache full:https://registry.npmmirror.com/generic-pool set size:31758 disposed:false
+157 silly fetch manifest ts-morph@12.0.0
+158 silly packumentCache full:https://registry.npmmirror.com/ts-morph cache-miss
+159 http fetch GET 200 https://registry.npmmirror.com/debug 435ms (cache updated)
+160 silly packumentCache full:https://registry.npmmirror.com/debug set size:31656 disposed:false
+161 silly fetch manifest @vercel/nft@0.29.2
+162 silly packumentCache full:https://registry.npmmirror.com/@vercel%2fnft cache-miss
+163 http fetch GET 200 https://registry.npmmirror.com/stream-to-promise 343ms (cache miss)
+164 silly packumentCache full:https://registry.npmmirror.com/stream-to-promise set size:5696 disposed:false
+165 silly fetch manifest @edge-runtime/node-utils@2.3.0
+166 silly packumentCache full:https://registry.npmmirror.com/@edge-runtime%2fnode-utils cache-miss
+167 http fetch GET 200 https://registry.npmmirror.com/tar 90ms (cache miss)
+168 silly packumentCache full:https://registry.npmmirror.com/tar set size:58722 disposed:false
+169 silly fetch manifest @edge-runtime/primitives@4.1.0
+170 silly packumentCache full:https://registry.npmmirror.com/@edge-runtime%2fprimitives cache-miss
+171 http fetch GET 200 https://registry.npmmirror.com/undici 463ms (cache miss)
+172 silly packumentCache full:https://registry.npmmirror.com/undici set size:162462 disposed:false
+173 silly fetch manifest @edge-runtime/vm@3.2.0
+174 silly packumentCache full:https://registry.npmmirror.com/@edge-runtime%2fvm cache-miss
+175 http fetch GET 200 https://registry.npmmirror.com/node-fetch 727ms (cache updated)
+176 silly packumentCache full:https://registry.npmmirror.com/node-fetch set size:63386 disposed:false
+177 silly fetch manifest @types/node@16.18.11
+178 silly packumentCache full:https://registry.npmmirror.com/@types%2fnode cache-miss
+179 http fetch GET 200 https://registry.npmmirror.com/tinyexec 395ms (cache miss)
+180 silly packumentCache full:https://registry.npmmirror.com/tinyexec set size:8707 disposed:false
+181 silly fetch manifest @vercel/error-utils@2.0.3
+182 silly packumentCache full:https://registry.npmmirror.com/@vercel%2ferror-utils cache-miss
+183 http fetch GET 200 https://registry.npmmirror.com/throttleit 772ms (cache miss)
+184 silly packumentCache full:https://registry.npmmirror.com/throttleit set size:4000 disposed:false
+185 silly fetch manifest @vercel/nft@0.29.2
+186 silly packumentCache full:https://registry.npmmirror.com/@vercel%2fnft cache-miss
+187 http fetch GET 200 https://registry.npmmirror.com/yauzl-promise 361ms (cache miss)
+188 silly packumentCache full:https://registry.npmmirror.com/yauzl-promise set size:16892 disposed:false
+189 silly fetch manifest @vercel/static-config@3.1.1
+190 silly packumentCache full:https://registry.npmmirror.com/@vercel%2fstatic-config cache-miss
+191 http fetch GET 200 https://registry.npmmirror.com/tree-kill 417ms (cache miss)
+192 silly packumentCache full:https://registry.npmmirror.com/tree-kill set size:4978 disposed:false
+193 silly fetch manifest async-listen@3.0.0
+194 silly packumentCache full:https://registry.npmmirror.com/async-listen cache-hit
+195 silly fetch manifest cjs-module-lexer@1.2.3
+196 silly packumentCache full:https://registry.npmmirror.com/cjs-module-lexer cache-miss
+197 http fetch GET 200 https://registry.npmmirror.com/ts-morph 374ms (cache miss)
+198 silly packumentCache full:https://registry.npmmirror.com/ts-morph set size:56468 disposed:false
+199 silly fetch manifest edge-runtime@2.5.9
+200 silly packumentCache full:https://registry.npmmirror.com/edge-runtime cache-miss
+201 http fetch GET 200 https://registry.npmmirror.com/xdg-app-paths 415ms (cache miss)
+202 silly packumentCache full:https://registry.npmmirror.com/xdg-app-paths set size:61133 disposed:false
+203 silly fetch manifest es-module-lexer@1.4.1
+204 silly packumentCache full:https://registry.npmmirror.com/es-module-lexer cache-miss
+205 http fetch GET 200 https://registry.npmmirror.com/@vercel%2fnft 399ms (cache miss)
+206 silly packumentCache full:https://registry.npmmirror.com/@vercel%2fnft set size:66249 disposed:false
+207 silly fetch manifest esbuild@0.14.47
+208 silly packumentCache full:https://registry.npmmirror.com/esbuild cache-miss
+209 http fetch GET 200 https://registry.npmmirror.com/@vercel%2fstatic-config 420ms (cache miss)
+210 silly packumentCache full:https://registry.npmmirror.com/@vercel%2fstatic-config set size:34515 disposed:false
+211 silly fetch manifest etag@1.8.1
+212 silly packumentCache full:https://registry.npmmirror.com/etag cache-miss
+213 http fetch GET 200 https://registry.npmmirror.com/@vercel%2fstatic-config 71ms (cache miss)
+214 silly packumentCache full:https://registry.npmmirror.com/@vercel%2fstatic-config set size:34515 disposed:false
+215 silly packumentCache full:https://registry.npmmirror.com/@vercel%2fstatic-config dispose
+216 silly fetch manifest node-fetch@2.6.9
+217 silly packumentCache full:https://registry.npmmirror.com/node-fetch cache-hit
+218 silly fetch manifest path-to-regexp-updated@npm:path-to-regexp@6.3.0
+219 silly packumentCache full:https://registry.npmmirror.com/path-to-regexp cache-miss
+220 http fetch GET 200 https://registry.npmmirror.com/@types%2fnode 252ms (cache updated)
+221 silly packumentCache full:https://registry.npmmirror.com/@types%2fnode set size:1081814 disposed:false
+222 silly fetch manifest path-to-regexp@6.1.0
+223 silly packumentCache full:https://registry.npmmirror.com/path-to-regexp cache-miss
+224 http fetch GET 200 https://registry.npmmirror.com/@vercel%2ferror-utils 372ms (cache miss)
+225 silly packumentCache full:https://registry.npmmirror.com/@vercel%2ferror-utils set size:12394 disposed:false
+226 silly fetch manifest ts-node@10.9.1
+227 silly packumentCache full:https://registry.npmmirror.com/ts-node cache-miss
+228 http fetch GET 200 https://registry.npmmirror.com/path-to-regexp 283ms (cache miss)
+229 silly packumentCache full:https://registry.npmmirror.com/path-to-regexp set size:27329 disposed:false
+230 silly fetch manifest typescript@4.9.5
+231 silly packumentCache full:https://registry.npmmirror.com/typescript cache-miss
+232 http fetch GET 200 https://registry.npmmirror.com/@edge-runtime%2fvm 669ms (cache miss)
+233 silly packumentCache full:https://registry.npmmirror.com/@edge-runtime%2fvm set size:79041 disposed:false
+234 silly fetch manifest undici@5.28.4
+235 silly packumentCache full:https://registry.npmmirror.com/undici cache-hit
+236 silly fetch manifest semver@6.3.1
+237 silly packumentCache full:https://registry.npmmirror.com/semver cache-hit
+238 silly fetch manifest path-to-regexp@6.1.0
+239 silly packumentCache full:https://registry.npmmirror.com/path-to-regexp cache-hit
+240 silly fetch manifest @vercel/gatsby-plugin-vercel-analytics@1.0.11
+241 silly packumentCache full:https://registry.npmmirror.com/@vercel%2fgatsby-plugin-vercel-analytics cache-miss
+242 http fetch GET 200 https://registry.npmmirror.com/@edge-runtime%2fprimitives 696ms (cache miss)
+243 silly packumentCache full:https://registry.npmmirror.com/@edge-runtime%2fprimitives set size:81337 disposed:false
+244 silly fetch manifest @vercel/gatsby-plugin-vercel-builder@2.0.90
+245 silly packumentCache full:https://registry.npmmirror.com/@vercel%2fgatsby-plugin-vercel-builder cache-miss
+246 http fetch GET 200 https://registry.npmmirror.com/@vercel%2fnft 386ms (cache miss)
+247 silly packumentCache full:https://registry.npmmirror.com/@vercel%2fnft set size:66249 disposed:false
+248 silly packumentCache full:https://registry.npmmirror.com/@vercel%2fnft dispose
+249 silly fetch manifest readdirp@^4.0.1
+250 silly packumentCache full:https://registry.npmmirror.com/readdirp cache-miss
+251 http fetch GET 200 https://registry.npmmirror.com/path-to-regexp 63ms (cache miss)
+252 silly packumentCache full:https://registry.npmmirror.com/path-to-regexp set size:27329 disposed:false
+253 silly packumentCache full:https://registry.npmmirror.com/path-to-regexp dispose
+254 http fetch GET 200 https://registry.npmmirror.com/uid-promise 807ms (cache miss)
+255 silly packumentCache full:https://registry.npmmirror.com/uid-promise set size:6531 disposed:false
+256 http fetch GET 200 https://registry.npmmirror.com/cjs-module-lexer 393ms (cache miss)
+257 silly packumentCache full:https://registry.npmmirror.com/cjs-module-lexer set size:20774 disposed:false
+258 http fetch GET 200 https://registry.npmmirror.com/es-module-lexer 366ms (cache miss)
+259 silly packumentCache full:https://registry.npmmirror.com/es-module-lexer set size:36303 disposed:false
+260 http fetch GET 200 https://registry.npmmirror.com/edge-runtime 394ms (cache miss)
+261 silly packumentCache full:https://registry.npmmirror.com/edge-runtime set size:91586 disposed:false
+262 http fetch GET 200 https://registry.npmmirror.com/etag 365ms (cache miss)
+263 silly packumentCache full:https://registry.npmmirror.com/etag set size:6177 disposed:false
+264 http fetch GET 200 https://registry.npmmirror.com/@edge-runtime%2fnode-utils 778ms (cache miss)
+265 silly packumentCache full:https://registry.npmmirror.com/@edge-runtime%2fnode-utils set size:12070 disposed:false
+266 http fetch GET 200 https://registry.npmmirror.com/is-node-process 1249ms (cache miss)
+267 silly packumentCache full:https://registry.npmmirror.com/is-node-process set size:4209 disposed:false
+268 http fetch GET 200 https://registry.npmmirror.com/esbuild 405ms (cache miss)
+269 silly packumentCache full:https://registry.npmmirror.com/esbuild set size:205049 disposed:false
+270 http fetch GET 200 https://registry.npmmirror.com/typescript 223ms (cache updated)
+271 silly packumentCache full:https://registry.npmmirror.com/typescript set size:1579540 disposed:false
+272 http fetch GET 200 https://registry.npmmirror.com/@vercel%2fgatsby-plugin-vercel-analytics 334ms (cache miss)
+273 silly packumentCache full:https://registry.npmmirror.com/@vercel%2fgatsby-plugin-vercel-analytics set size:13534 disposed:false
+274 http fetch GET 200 https://registry.npmmirror.com/readdirp 320ms (cache miss)
+275 silly packumentCache full:https://registry.npmmirror.com/readdirp set size:17999 disposed:false
+276 http fetch GET 200 https://registry.npmmirror.com/@vercel%2fgatsby-plugin-vercel-builder 382ms (cache miss)
+277 silly packumentCache full:https://registry.npmmirror.com/@vercel%2fgatsby-plugin-vercel-builder set size:80738 disposed:false
+278 http fetch GET 200 https://registry.npmmirror.com/ts-node 415ms (cache miss)
+279 silly packumentCache full:https://registry.npmmirror.com/ts-node set size:71828 disposed:false
+280 http fetch GET 200 https://registry.npmmirror.com/is-buffer 2164ms (cache miss)
+281 silly packumentCache full:https://registry.npmmirror.com/is-buffer set size:6203 disposed:false
+282 silly placeDep node_modules/vercel async-retry@1.3.3 OK for: @vercel/blob@1.0.2 want: ^1.3.3
+283 silly placeDep node_modules/vercel is-buffer@2.0.5 OK for: @vercel/blob@1.0.2 want: ^2.0.5
+284 silly placeDep node_modules/vercel is-node-process@1.2.0 OK for: @vercel/blob@1.0.2 want: ^1.2.0
+285 silly placeDep node_modules/vercel throttleit@2.1.0 OK for: @vercel/blob@1.0.2 want: ^2.1.0
+286 silly placeDep node_modules/vercel undici@5.29.0 OK for: @vercel/blob@1.0.2 want: ^5.28.4
+287 silly fetch manifest retry@0.13.1
+288 silly packumentCache full:https://registry.npmmirror.com/retry cache-miss
+289 silly fetch manifest @fastify/busboy@^2.0.0
+290 silly packumentCache full:https://registry.npmmirror.com/@fastify%2fbusboy cache-miss
+291 http fetch GET 200 https://registry.npmmirror.com/retry 41ms (cache miss)
+292 silly packumentCache full:https://registry.npmmirror.com/retry set size:8151 disposed:false
+293 http fetch GET 200 https://registry.npmmirror.com/@fastify%2fbusboy 395ms (cache miss)
+294 silly packumentCache full:https://registry.npmmirror.com/@fastify%2fbusboy set size:15320 disposed:false
+295 silly fetch manifest encoding@^0.1.0
+296 silly packumentCache full:https://registry.npmmirror.com/encoding cache-miss
+297 http fetch GET 200 https://registry.npmmirror.com/encoding 299ms (cache revalidated)
+298 silly packumentCache full:https://registry.npmmirror.com/encoding set size:16633 disposed:false
+299 silly placeDep node_modules/vercel @tootallnate/once@2.0.0 OK for: @vercel/fun@1.1.6 want: 2.0.0
+300 silly placeDep node_modules/vercel async-listen@1.2.0 OK for: @vercel/fun@1.1.6 want: 1.2.0
+301 silly placeDep node_modules/vercel debug@4.3.4 OK for: @vercel/fun@1.1.6 want: 4.3.4
+302 silly placeDep node_modules/vercel generic-pool@3.4.2 OK for: @vercel/fun@1.1.6 want: 3.4.2
+303 silly placeDep node_modules/vercel micro@9.3.5-canary.3 OK for: @vercel/fun@1.1.6 want: 9.3.5-canary.3
+304 silly placeDep node_modules/vercel ms@2.1.1 OK for: @vercel/fun@1.1.6 want: 2.1.1
+305 silly placeDep node_modules/vercel node-fetch@2.6.7 OK for: @vercel/fun@1.1.6 want: 2.6.7
+306 silly placeDep node_modules/vercel path-match@1.2.4 OK for: @vercel/fun@1.1.6 want: 1.2.4
+307 silly placeDep node_modules/vercel promisepipe@3.0.0 OK for: @vercel/fun@1.1.6 want: 3.0.0
+308 silly placeDep node_modules/vercel semver@7.5.4 OK for: @vercel/fun@1.1.6 want: 7.5.4
+309 silly placeDep node_modules/vercel stat-mode@0.3.0 OK for: @vercel/fun@1.1.6 want: 0.3.0
+310 silly placeDep node_modules/vercel stream-to-promise@2.2.0 OK for: @vercel/fun@1.1.6 want: 2.2.0
+311 silly placeDep node_modules/vercel tar@6.2.1 OK for: @vercel/fun@1.1.6 want: 6.2.1
+312 silly placeDep node_modules/vercel tinyexec@0.3.2 OK for: @vercel/fun@1.1.6 want: 0.3.2
+313 silly placeDep node_modules/vercel tree-kill@1.2.2 OK for: @vercel/fun@1.1.6 want: 1.2.2
+314 silly placeDep node_modules/vercel uid-promise@1.0.0 OK for: @vercel/fun@1.1.6 want: 1.0.0
+315 silly placeDep node_modules/vercel xdg-app-paths@5.1.0 OK for: @vercel/fun@1.1.6 want: 5.1.0
+316 silly placeDep node_modules/vercel yauzl-promise@2.1.3 OK for: @vercel/fun@1.1.6 want: 2.1.3
+317 silly fetch manifest ms@2.1.2
+318 silly packumentCache full:https://registry.npmmirror.com/ms cache-hit
+319 silly fetch manifest arg@4.1.0
+320 silly packumentCache full:https://registry.npmmirror.com/arg cache-miss
+321 silly fetch manifest content-type@1.0.4
+322 silly packumentCache full:https://registry.npmmirror.com/content-type cache-miss
+323 silly fetch manifest raw-body@2.4.1
+324 silly packumentCache full:https://registry.npmmirror.com/raw-body cache-miss
+325 silly fetch manifest whatwg-url@^5.0.0
+326 silly packumentCache full:https://registry.npmmirror.com/whatwg-url cache-miss
+327 silly fetch manifest http-errors@~1.4.0
+328 silly packumentCache full:https://registry.npmmirror.com/http-errors cache-miss
+329 silly fetch manifest path-to-regexp@^1.0.0
+330 silly packumentCache full:https://registry.npmmirror.com/path-to-regexp cache-hit
+331 silly fetch manifest lru-cache@^6.0.0
+332 silly packumentCache full:https://registry.npmmirror.com/lru-cache cache-miss
+333 silly fetch manifest any-promise@~1.3.0
+334 silly packumentCache full:https://registry.npmmirror.com/any-promise cache-miss
+335 silly fetch manifest end-of-stream@~1.1.0
+336 silly packumentCache full:https://registry.npmmirror.com/end-of-stream cache-miss
+337 silly fetch manifest stream-to-array@~2.3.0
+338 silly packumentCache full:https://registry.npmmirror.com/stream-to-array cache-miss
+339 silly fetch manifest chownr@^2.0.0
+340 silly packumentCache full:https://registry.npmmirror.com/chownr cache-miss
+341 silly fetch manifest fs-minipass@^2.0.0
+342 silly packumentCache full:https://registry.npmmirror.com/fs-minipass cache-miss
+343 silly fetch manifest minipass@^5.0.0
+344 silly packumentCache full:https://registry.npmmirror.com/minipass cache-miss
+345 silly fetch manifest minizlib@^2.1.1
+346 silly packumentCache full:https://registry.npmmirror.com/minizlib cache-miss
+347 silly fetch manifest mkdirp@^1.0.3
+348 silly packumentCache full:https://registry.npmmirror.com/mkdirp cache-miss
+349 silly fetch manifest yallist@^4.0.0
+350 silly packumentCache full:https://registry.npmmirror.com/yallist cache-miss
+351 http fetch GET 200 https://registry.npmmirror.com/content-type 42ms (cache miss)
+352 silly packumentCache full:https://registry.npmmirror.com/content-type set size:5128 disposed:false
+353 silly fetch manifest xdg-portable@^7.0.0
+354 silly packumentCache full:https://registry.npmmirror.com/xdg-portable cache-miss
+355 http fetch GET 200 https://registry.npmmirror.com/mkdirp 63ms (cache revalidated)
+356 silly packumentCache full:https://registry.npmmirror.com/mkdirp set size:92067 disposed:false
+357 silly fetch manifest yauzl@^2.9.1
+358 silly packumentCache full:https://registry.npmmirror.com/yauzl cache-miss
+359 http fetch GET 200 https://registry.npmmirror.com/whatwg-url 73ms (cache revalidated)
+360 silly packumentCache full:https://registry.npmmirror.com/whatwg-url set size:148247 disposed:false
+361 silly fetch manifest yauzl-clone@^1.0.4
+362 silly packumentCache full:https://registry.npmmirror.com/yauzl-clone cache-miss
+363 http fetch GET 200 https://registry.npmmirror.com/yallist 78ms (cache miss)
+364 silly packumentCache full:https://registry.npmmirror.com/yallist set size:7662 disposed:false
+365 http fetch GET 200 https://registry.npmmirror.com/minizlib 82ms (cache miss)
+366 silly packumentCache full:https://registry.npmmirror.com/minizlib set size:9052 disposed:false
+367 http fetch GET 200 https://registry.npmmirror.com/any-promise 86ms (cache miss)
+368 silly packumentCache full:https://registry.npmmirror.com/any-promise set size:5727 disposed:false
+369 http fetch GET 200 https://registry.npmmirror.com/chownr 86ms (cache miss)
+370 silly packumentCache full:https://registry.npmmirror.com/chownr set size:4259 disposed:false
+371 http fetch GET 200 https://registry.npmmirror.com/fs-minipass 87ms (cache miss)
+372 silly packumentCache full:https://registry.npmmirror.com/fs-minipass set size:10246 disposed:false
+373 http fetch GET 200 https://registry.npmmirror.com/end-of-stream 88ms (cache revalidated)
+374 silly packumentCache full:https://registry.npmmirror.com/end-of-stream set size:24810 disposed:false
+375 http fetch GET 200 https://registry.npmmirror.com/raw-body 91ms (cache miss)
+376 silly packumentCache full:https://registry.npmmirror.com/raw-body set size:22099 disposed:false
+377 http fetch GET 200 https://registry.npmmirror.com/arg 93ms (cache miss)
+378 silly packumentCache full:https://registry.npmmirror.com/arg set size:13660 disposed:false
+379 http fetch GET 200 https://registry.npmmirror.com/http-errors 96ms (cache miss)
+380 silly packumentCache full:https://registry.npmmirror.com/http-errors set size:13282 disposed:false
+381 http fetch GET 200 https://registry.npmmirror.com/minipass 97ms (cache miss)
+382 silly packumentCache full:https://registry.npmmirror.com/minipass set size:57000 disposed:false
+383 http fetch GET 200 https://registry.npmmirror.com/yauzl 57ms (cache revalidated)
+384 silly packumentCache full:https://registry.npmmirror.com/yauzl set size:96392 disposed:false
+385 http fetch GET 200 https://registry.npmmirror.com/lru-cache 402ms (cache updated)
+386 silly packumentCache full:https://registry.npmmirror.com/lru-cache set size:97311 disposed:false
+387 http fetch GET 200 https://registry.npmmirror.com/xdg-portable 396ms (cache miss)
+388 silly packumentCache full:https://registry.npmmirror.com/xdg-portable set size:66322 disposed:false
+389 http fetch GET 200 https://registry.npmmirror.com/stream-to-array 810ms (cache miss)
+390 silly packumentCache full:https://registry.npmmirror.com/stream-to-array set size:3873 disposed:false
+391 http fetch GET 200 https://registry.npmmirror.com/yauzl-clone 1319ms (cache miss)
+392 silly packumentCache full:https://registry.npmmirror.com/yauzl-clone set size:9182 disposed:false
+393 silly placeDep node_modules/vercel @vercel/static-config@3.1.1 OK for: @vercel/hydrogen@1.2.3 want: 3.1.1
+394 silly placeDep node_modules/vercel ts-morph@12.0.0 OK for: @vercel/hydrogen@1.2.3 want: 12.0.0
+395 silly fetch manifest ajv@8.6.3
+396 silly packumentCache full:https://registry.npmmirror.com/ajv cache-miss
+397 silly fetch manifest json-schema-to-ts@1.6.4
+398 silly packumentCache full:https://registry.npmmirror.com/json-schema-to-ts cache-miss
+399 silly fetch manifest @ts-morph/common@~0.11.0
+400 silly packumentCache full:https://registry.npmmirror.com/@ts-morph%2fcommon cache-miss
+401 silly fetch manifest code-block-writer@^10.1.1
+402 silly packumentCache full:https://registry.npmmirror.com/code-block-writer cache-miss
+403 http fetch GET 200 https://registry.npmmirror.com/json-schema-to-ts 333ms (cache miss)
+404 silly packumentCache full:https://registry.npmmirror.com/json-schema-to-ts set size:80188 disposed:false
+405 http fetch GET 200 https://registry.npmmirror.com/ajv 1098ms (cache miss)
+406 silly packumentCache full:https://registry.npmmirror.com/ajv set size:127218 disposed:false
+407 http fetch GET 200 https://registry.npmmirror.com/@ts-morph%2fcommon 1622ms (cache miss)
+408 silly packumentCache full:https://registry.npmmirror.com/@ts-morph%2fcommon set size:25210 disposed:false
+409 http fetch GET 200 https://registry.npmmirror.com/code-block-writer 3378ms (cache miss)
+410 silly packumentCache full:https://registry.npmmirror.com/code-block-writer set size:31331 disposed:false
+411 silly placeDep node_modules/vercel @vercel/nft@0.29.2 OK for: @vercel/next@4.10.2 want: 0.29.2
+412 silly fetch manifest @mapbox/node-pre-gyp@^2.0.0
+413 silly packumentCache full:https://registry.npmmirror.com/@mapbox%2fnode-pre-gyp cache-miss
+414 silly fetch manifest @rollup/pluginutils@^5.1.3
+415 silly packumentCache full:https://registry.npmmirror.com/@rollup%2fpluginutils cache-miss
+416 silly fetch manifest acorn@^8.6.0
+417 silly packumentCache full:https://registry.npmmirror.com/acorn cache-miss
+418 silly fetch manifest acorn-import-attributes@^1.9.5
+419 silly packumentCache full:https://registry.npmmirror.com/acorn-import-attributes cache-miss
+420 silly fetch manifest async-sema@^3.1.1
+421 silly packumentCache full:https://registry.npmmirror.com/async-sema cache-miss
+422 silly fetch manifest bindings@^1.4.0
+423 silly packumentCache full:https://registry.npmmirror.com/bindings cache-miss
+424 silly fetch manifest estree-walker@2.0.2
+425 silly packumentCache full:https://registry.npmmirror.com/estree-walker cache-miss
+426 silly fetch manifest glob@^10.4.5
+427 silly packumentCache full:https://registry.npmmirror.com/glob cache-miss
+428 silly fetch manifest graceful-fs@^4.2.9
+429 silly packumentCache full:https://registry.npmmirror.com/graceful-fs cache-miss
+430 silly fetch manifest node-gyp-build@^4.2.2
+431 silly packumentCache full:https://registry.npmmirror.com/node-gyp-build cache-miss
+432 silly fetch manifest picomatch@^4.0.2
+433 silly packumentCache full:https://registry.npmmirror.com/picomatch cache-miss
+434 silly fetch manifest resolve-from@^5.0.0
+435 silly packumentCache full:https://registry.npmmirror.com/resolve-from cache-miss
+436 http fetch GET 200 https://registry.npmmirror.com/node-gyp-build 62ms (cache miss)
+437 silly packumentCache full:https://registry.npmmirror.com/node-gyp-build set size:16083 disposed:false
+438 http fetch GET 200 https://registry.npmmirror.com/estree-walker 307ms (cache miss)
+439 silly packumentCache full:https://registry.npmmirror.com/estree-walker set size:11874 disposed:false
+440 http fetch GET 200 https://registry.npmmirror.com/@rollup%2fpluginutils 314ms (cache miss)
+441 silly packumentCache full:https://registry.npmmirror.com/@rollup%2fpluginutils set size:19726 disposed:false
+442 http fetch GET 200 https://registry.npmmirror.com/graceful-fs 325ms (cache revalidated)
+443 silly packumentCache full:https://registry.npmmirror.com/graceful-fs set size:109027 disposed:false
+444 http fetch GET 200 https://registry.npmmirror.com/picomatch 383ms (cache miss)
+445 silly packumentCache full:https://registry.npmmirror.com/picomatch set size:22181 disposed:false
+446 http fetch GET 200 https://registry.npmmirror.com/resolve-from 398ms (cache revalidated)
+447 silly packumentCache full:https://registry.npmmirror.com/resolve-from set size:11769 disposed:false
+448 http fetch GET 200 https://registry.npmmirror.com/bindings 402ms (cache miss)
+449 silly packumentCache full:https://registry.npmmirror.com/bindings set size:6584 disposed:false
+450 http fetch GET 200 https://registry.npmmirror.com/glob 413ms (cache miss)
+451 silly packumentCache full:https://registry.npmmirror.com/glob set size:82783 disposed:false
+452 http fetch GET 200 https://registry.npmmirror.com/async-sema 434ms (cache miss)
+453 silly packumentCache full:https://registry.npmmirror.com/async-sema set size:10615 disposed:false
+454 http fetch GET 200 https://registry.npmmirror.com/acorn 824ms (cache miss)
+455 silly packumentCache full:https://registry.npmmirror.com/acorn set size:51707 disposed:false
+456 http fetch GET 200 https://registry.npmmirror.com/acorn-import-attributes 1300ms (cache miss)
+457 silly packumentCache full:https://registry.npmmirror.com/acorn-import-attributes set size:3820 disposed:false
+458 http fetch GET 200 https://registry.npmmirror.com/@mapbox%2fnode-pre-gyp 2174ms (cache miss)
+459 silly packumentCache full:https://registry.npmmirror.com/@mapbox%2fnode-pre-gyp set size:28035 disposed:false
+460 silly fetch manifest rollup@^1.20.0||^2.0.0||^3.0.0||^4.0.0
+461 silly packumentCache full:https://registry.npmmirror.com/rollup cache-miss
+462 http fetch GET 200 https://registry.npmmirror.com/rollup 459ms (cache miss)
+463 silly packumentCache full:https://registry.npmmirror.com/rollup set size:609650 disposed:false
+464 silly placeDep node_modules/vercel @mapbox/node-pre-gyp@2.0.0 OK for: @vercel/nft@0.29.2 want: ^2.0.0
+465 silly placeDep node_modules/vercel @rollup/pluginutils@5.2.0 OK for: @vercel/nft@0.29.2 want: ^5.1.3
+466 silly placeDep node_modules/vercel acorn@8.15.0 OK for: @vercel/nft@0.29.2 want: ^8.6.0
+467 silly placeDep node_modules/vercel acorn-import-attributes@1.9.5 OK for: @vercel/nft@0.29.2 want: ^1.9.5
+468 silly placeDep node_modules/vercel async-sema@3.1.1 OK for: @vercel/nft@0.29.2 want: ^3.1.1
+469 silly placeDep node_modules/vercel bindings@1.5.0 OK for: @vercel/nft@0.29.2 want: ^1.4.0
+470 silly placeDep node_modules/vercel estree-walker@2.0.2 OK for: @vercel/nft@0.29.2 want: 2.0.2
+471 silly placeDep node_modules/vercel glob@10.4.5 OK for: @vercel/nft@0.29.2 want: ^10.4.5
+472 silly placeDep node_modules/vercel graceful-fs@4.2.11 OK for: @vercel/nft@0.29.2 want: ^4.2.9
+473 silly placeDep node_modules/vercel node-gyp-build@4.8.4 OK for: @vercel/nft@0.29.2 want: ^4.2.2
+474 silly placeDep node_modules/vercel picomatch@4.0.3 OK for: @vercel/nft@0.29.2 want: ^4.0.2
+475 silly placeDep node_modules/vercel resolve-from@5.0.0 OK for: @vercel/nft@0.29.2 want: ^5.0.0
+476 silly fetch manifest consola@^3.2.3
+477 silly packumentCache full:https://registry.npmmirror.com/consola cache-miss
+478 silly fetch manifest detect-libc@^2.0.0
+479 silly packumentCache full:https://registry.npmmirror.com/detect-libc cache-miss
+480 silly fetch manifest https-proxy-agent@^7.0.5
+481 silly packumentCache full:https://registry.npmmirror.com/https-proxy-agent cache-miss
+482 silly fetch manifest nopt@^8.0.0
+483 silly packumentCache full:https://registry.npmmirror.com/nopt cache-miss
+484 silly fetch manifest tar@^7.4.0
+485 silly packumentCache full:https://registry.npmmirror.com/tar cache-hit
+486 silly fetch manifest @types/estree@^1.0.0
+487 silly packumentCache full:https://registry.npmmirror.com/@types%2festree cache-miss
+488 silly fetch manifest estree-walker@^2.0.2
+489 silly packumentCache full:https://registry.npmmirror.com/estree-walker cache-hit
+490 silly fetch manifest file-uri-to-path@1.0.0
+491 silly packumentCache full:https://registry.npmmirror.com/file-uri-to-path cache-miss
+492 silly fetch manifest foreground-child@^3.1.0
+493 silly packumentCache full:https://registry.npmmirror.com/foreground-child cache-miss
+494 silly fetch manifest jackspeak@^3.1.2
+495 silly packumentCache full:https://registry.npmmirror.com/jackspeak cache-miss
+496 silly fetch manifest minimatch@^9.0.4
+497 silly packumentCache full:https://registry.npmmirror.com/minimatch cache-miss
+498 silly fetch manifest minipass@^7.1.2
+499 silly packumentCache full:https://registry.npmmirror.com/minipass cache-hit
+500 silly fetch manifest package-json-from-dist@^1.0.0
+501 silly packumentCache full:https://registry.npmmirror.com/package-json-from-dist cache-miss
+502 silly fetch manifest path-scurry@^1.11.1
+503 silly packumentCache full:https://registry.npmmirror.com/path-scurry cache-miss
+504 http fetch GET 200 https://registry.npmmirror.com/https-proxy-agent 69ms (cache revalidated)
+505 silly packumentCache full:https://registry.npmmirror.com/https-proxy-agent set size:70730 disposed:false
+506 http fetch GET 200 https://registry.npmmirror.com/@types%2festree 75ms (cache miss)
+507 silly packumentCache full:https://registry.npmmirror.com/@types%2festree set size:16100 disposed:false
+508 http fetch GET 200 https://registry.npmmirror.com/detect-libc 78ms (cache miss)
+509 silly packumentCache full:https://registry.npmmirror.com/detect-libc set size:9099 disposed:false
+510 http fetch GET 200 https://registry.npmmirror.com/package-json-from-dist 77ms (cache miss)
+511 silly packumentCache full:https://registry.npmmirror.com/package-json-from-dist set size:3058 disposed:false
+512 http fetch GET 200 https://registry.npmmirror.com/nopt 80ms (cache miss)
+513 silly packumentCache full:https://registry.npmmirror.com/nopt set size:17483 disposed:false
+514 http fetch GET 200 https://registry.npmmirror.com/foreground-child 81ms (cache miss)
+515 silly packumentCache full:https://registry.npmmirror.com/foreground-child set size:13823 disposed:false
+516 http fetch GET 200 https://registry.npmmirror.com/jackspeak 83ms (cache miss)
+517 silly packumentCache full:https://registry.npmmirror.com/jackspeak set size:46433 disposed:false
+518 http fetch GET 200 https://registry.npmmirror.com/path-scurry 87ms (cache miss)
+519 silly packumentCache full:https://registry.npmmirror.com/path-scurry set size:30652 disposed:false
+520 http fetch GET 200 https://registry.npmmirror.com/minimatch 354ms (cache miss)
+521 silly packumentCache full:https://registry.npmmirror.com/minimatch set size:81854 disposed:false
+522 http fetch GET 200 https://registry.npmmirror.com/file-uri-to-path 371ms (cache miss)
+523 silly packumentCache full:https://registry.npmmirror.com/file-uri-to-path set size:3098 disposed:false
+524 http fetch GET 200 https://registry.npmmirror.com/consola 417ms (cache miss)
+525 silly packumentCache full:https://registry.npmmirror.com/consola set size:45189 disposed:false
+526 silly placeDep node_modules/vercel consola@3.4.2 OK for: @mapbox/node-pre-gyp@2.0.0 want: ^3.2.3
+527 silly placeDep node_modules/vercel detect-libc@2.0.4 OK for: @mapbox/node-pre-gyp@2.0.0 want: ^2.0.0
+528 silly placeDep node_modules/vercel https-proxy-agent@7.0.6 OK for: @mapbox/node-pre-gyp@2.0.0 want: ^7.0.5
+529 silly placeDep node_modules/vercel nopt@8.1.0 OK for: @mapbox/node-pre-gyp@2.0.0 want: ^8.0.0
+530 silly placeDep node_modules/vercel/node_modules/@mapbox/node-pre-gyp tar@7.4.3 OK for: @mapbox/node-pre-gyp@2.0.0 want: ^7.4.0
+531 silly fetch manifest agent-base@^7.1.2
+532 silly packumentCache full:https://registry.npmmirror.com/agent-base cache-miss
+533 silly fetch manifest abbrev@^3.0.0
+534 silly packumentCache full:https://registry.npmmirror.com/abbrev cache-miss
+535 silly fetch manifest @isaacs/fs-minipass@^4.0.0
+536 silly packumentCache full:https://registry.npmmirror.com/@isaacs%2ffs-minipass cache-miss
+537 silly fetch manifest chownr@^3.0.0
+538 silly packumentCache full:https://registry.npmmirror.com/chownr cache-hit
+539 silly fetch manifest minizlib@^3.0.1
+540 silly packumentCache full:https://registry.npmmirror.com/minizlib cache-hit
+541 silly fetch manifest mkdirp@^3.0.1
+542 silly packumentCache full:https://registry.npmmirror.com/mkdirp cache-hit
+543 silly fetch manifest yallist@^5.0.0
+544 silly packumentCache full:https://registry.npmmirror.com/yallist cache-hit
+545 http fetch GET 200 https://registry.npmmirror.com/abbrev 69ms (cache miss)
+546 silly packumentCache full:https://registry.npmmirror.com/abbrev set size:5904 disposed:false
+547 http fetch GET 200 https://registry.npmmirror.com/agent-base 70ms (cache revalidated)
+548 silly packumentCache full:https://registry.npmmirror.com/agent-base set size:60667 disposed:false
+549 http fetch GET 200 https://registry.npmmirror.com/@isaacs%2ffs-minipass 877ms (cache miss)
+550 silly packumentCache full:https://registry.npmmirror.com/@isaacs%2ffs-minipass set size:2989 disposed:false
+551 silly placeDep node_modules/vercel @types/estree@1.0.8 OK for: @rollup/pluginutils@5.2.0 want: ^1.0.0
+552 silly fetch manifest @swc/core@>=1.2.50
+553 silly packumentCache full:https://registry.npmmirror.com/@swc%2fcore cache-miss
+554 http fetch GET 200 https://registry.npmmirror.com/@swc%2fcore 970ms (cache miss)
+555 silly packumentCache full:https://registry.npmmirror.com/@swc%2fcore set size:504756 disposed:false
+556 silly fetch manifest @swc/helpers@>=0.5.17
+557 silly packumentCache full:https://registry.npmmirror.com/@swc%2fhelpers cache-miss
+558 http fetch GET 200 https://registry.npmmirror.com/@swc%2fhelpers 85ms (cache miss)
+559 silly packumentCache full:https://registry.npmmirror.com/@swc%2fhelpers set size:96308 disposed:false
+560 silly fetch manifest @swc/wasm@>=1.2.50
+561 silly packumentCache full:https://registry.npmmirror.com/@swc%2fwasm cache-miss
+562 http fetch GET 200 https://registry.npmmirror.com/@swc%2fwasm 425ms (cache miss)
+563 silly packumentCache full:https://registry.npmmirror.com/@swc%2fwasm set size:359790 disposed:false
+564 silly placeDep node_modules/vercel @edge-runtime/node-utils@2.3.0 OK for: @vercel/node@5.3.6 want: 2.3.0
+565 silly placeDep node_modules/vercel @edge-runtime/primitives@4.1.0 OK for: @vercel/node@5.3.6 want: 4.1.0
+566 silly placeDep node_modules/vercel @edge-runtime/vm@3.2.0 OK for: @vercel/node@5.3.6 want: 3.2.0
+567 silly placeDep node_modules/vercel @types/node@16.18.11 OK for: @vercel/node@5.3.6 want: 16.18.11
+568 silly placeDep node_modules/vercel @vercel/error-utils@2.0.3 OK for: @vercel/node@5.3.6 want: 2.0.3
+569 silly placeDep node_modules/vercel/node_modules/@vercel/node async-listen@3.0.0 OK for: @vercel/node@5.3.6 want: 3.0.0
+570 silly placeDep node_modules/vercel cjs-module-lexer@1.2.3 OK for: @vercel/node@5.3.6 want: 1.2.3
+571 silly placeDep node_modules/vercel edge-runtime@2.5.9 OK for: @vercel/node@5.3.6 want: 2.5.9
+572 silly placeDep node_modules/vercel es-module-lexer@1.4.1 OK for: @vercel/node@5.3.6 want: 1.4.1
+573 silly placeDep node_modules/vercel esbuild@0.14.47 OK for: @vercel/node@5.3.6 want: 0.14.47
+574 silly placeDep node_modules/vercel etag@1.8.1 OK for: @vercel/node@5.3.6 want: 1.8.1
+575 silly placeDep node_modules/vercel/node_modules/@vercel/node node-fetch@2.6.9 OK for: @vercel/node@5.3.6 want: 2.6.9
+576 silly placeDep node_modules/vercel path-to-regexp@6.1.0 OK for: @vercel/node@5.3.6 want: 6.1.0
+577 silly placeDep node_modules/vercel path-to-regexp-updated@6.3.0 OK for: @vercel/node@5.3.6 want: npm:path-to-regexp@6.3.0
+578 silly placeDep node_modules/vercel ts-node@10.9.1 OK for: @vercel/node@5.3.6 want: 10.9.1
+579 silly placeDep node_modules/vercel typescript@4.9.5 OK for: ts-node@10.9.1 want: >=2.7
+580 silly placeDep node_modules/vercel/node_modules/@vercel/node undici@5.28.4 OK for: @vercel/node@5.3.6 want: 5.28.4
+581 silly fetch manifest async-listen@3.0.1
+582 silly packumentCache full:https://registry.npmmirror.com/async-listen cache-hit
+583 silly fetch manifest mri@1.2.0
+584 silly packumentCache full:https://registry.npmmirror.com/mri cache-miss
+585 silly fetch manifest picocolors@1.0.0
+586 silly packumentCache full:https://registry.npmmirror.com/picocolors cache-miss
+587 silly fetch manifest pretty-ms@7.0.1
+588 silly packumentCache full:https://registry.npmmirror.com/pretty-ms cache-miss
+589 silly fetch manifest signal-exit@4.0.2
+590 silly packumentCache full:https://registry.npmmirror.com/signal-exit cache-miss
+591 silly fetch manifest time-span@4.0.0
+592 silly packumentCache full:https://registry.npmmirror.com/time-span cache-miss
+593 silly fetch manifest @edge-runtime/format@2.2.1
+594 silly packumentCache full:https://registry.npmmirror.com/@edge-runtime%2fformat cache-miss
+595 silly fetch manifest @edge-runtime/ponyfill@2.4.2
+596 silly packumentCache full:https://registry.npmmirror.com/@edge-runtime%2fponyfill cache-miss
+597 silly fetch manifest esbuild-android-64@0.14.47
+598 silly packumentCache full:https://registry.npmmirror.com/esbuild-android-64 cache-miss
+599 silly fetch manifest esbuild-android-arm64@0.14.47
+600 silly packumentCache full:https://registry.npmmirror.com/esbuild-android-arm64 cache-miss
+601 silly fetch manifest esbuild-darwin-64@0.14.47
+602 silly packumentCache full:https://registry.npmmirror.com/esbuild-darwin-64 cache-miss
+603 silly fetch manifest esbuild-darwin-arm64@0.14.47
+604 silly packumentCache full:https://registry.npmmirror.com/esbuild-darwin-arm64 cache-miss
+605 silly fetch manifest esbuild-freebsd-64@0.14.47
+606 silly packumentCache full:https://registry.npmmirror.com/esbuild-freebsd-64 cache-miss
+607 silly fetch manifest esbuild-freebsd-arm64@0.14.47
+608 silly packumentCache full:https://registry.npmmirror.com/esbuild-freebsd-arm64 cache-miss
+609 silly fetch manifest esbuild-linux-32@0.14.47
+610 silly packumentCache full:https://registry.npmmirror.com/esbuild-linux-32 cache-miss
+611 silly fetch manifest esbuild-linux-64@0.14.47
+612 silly packumentCache full:https://registry.npmmirror.com/esbuild-linux-64 cache-miss
+613 http fetch GET 200 https://registry.npmmirror.com/pretty-ms 49ms (cache miss)
+614 silly packumentCache full:https://registry.npmmirror.com/pretty-ms set size:11133 disposed:false
+615 silly fetch manifest esbuild-linux-arm@0.14.47
+616 silly packumentCache full:https://registry.npmmirror.com/esbuild-linux-arm cache-miss
+617 http fetch GET 200 https://registry.npmmirror.com/mri 365ms (cache miss)
+618 silly packumentCache full:https://registry.npmmirror.com/mri set size:5756 disposed:false
+619 silly fetch manifest esbuild-linux-arm64@0.14.47
+620 silly packumentCache full:https://registry.npmmirror.com/esbuild-linux-arm64 cache-miss
+621 http fetch GET 200 https://registry.npmmirror.com/signal-exit 368ms (cache miss)
+622 silly packumentCache full:https://registry.npmmirror.com/signal-exit set size:12850 disposed:false
+623 silly fetch manifest esbuild-linux-mips64le@0.14.47
+624 silly packumentCache full:https://registry.npmmirror.com/esbuild-linux-mips64le cache-miss
+625 http fetch GET 200 https://registry.npmmirror.com/@edge-runtime%2fformat 406ms (cache miss)
+626 silly packumentCache full:https://registry.npmmirror.com/@edge-runtime%2fformat set size:32353 disposed:false
+627 silly fetch manifest esbuild-linux-ppc64le@0.14.47
+628 silly packumentCache full:https://registry.npmmirror.com/esbuild-linux-ppc64le cache-miss
+629 http fetch GET 200 https://registry.npmmirror.com/time-span 409ms (cache miss)
+630 silly packumentCache full:https://registry.npmmirror.com/time-span set size:4333 disposed:false
+631 silly fetch manifest esbuild-linux-riscv64@0.14.47
+632 silly packumentCache full:https://registry.npmmirror.com/esbuild-linux-riscv64 cache-miss
+633 http fetch GET 200 https://registry.npmmirror.com/@edge-runtime%2fponyfill 414ms (cache miss)
+634 silly packumentCache full:https://registry.npmmirror.com/@edge-runtime%2fponyfill set size:19802 disposed:false
+635 silly fetch manifest esbuild-linux-s390x@0.14.47
+636 silly packumentCache full:https://registry.npmmirror.com/esbuild-linux-s390x cache-miss
+637 http fetch GET 200 https://registry.npmmirror.com/esbuild-darwin-arm64 420ms (cache miss)
+638 silly packumentCache full:https://registry.npmmirror.com/esbuild-darwin-arm64 set size:86624 disposed:false
+639 silly fetch manifest esbuild-netbsd-64@0.14.47
+640 silly packumentCache full:https://registry.npmmirror.com/esbuild-netbsd-64 cache-miss
+641 http fetch GET 200 https://registry.npmmirror.com/esbuild-linux-32 425ms (cache miss)
+642 silly packumentCache full:https://registry.npmmirror.com/esbuild-linux-32 set size:105994 disposed:false
+643 silly fetch manifest esbuild-openbsd-64@0.14.47
+644 silly packumentCache full:https://registry.npmmirror.com/esbuild-openbsd-64 cache-miss
+645 http fetch GET 200 https://registry.npmmirror.com/esbuild-freebsd-arm64 433ms (cache miss)
+646 silly packumentCache full:https://registry.npmmirror.com/esbuild-freebsd-arm64 set size:108731 disposed:false
+647 silly fetch manifest esbuild-sunos-64@0.14.47
+648 silly packumentCache full:https://registry.npmmirror.com/esbuild-sunos-64 cache-miss
+649 http fetch GET 200 https://registry.npmmirror.com/esbuild-darwin-64 437ms (cache miss)
+650 silly packumentCache full:https://registry.npmmirror.com/esbuild-darwin-64 set size:129165 disposed:false
+651 silly fetch manifest esbuild-windows-32@0.14.47
+652 silly packumentCache full:https://registry.npmmirror.com/esbuild-windows-32 cache-miss
+653 http fetch GET 200 https://registry.npmmirror.com/esbuild-freebsd-64 445ms (cache miss)
+654 silly packumentCache full:https://registry.npmmirror.com/esbuild-freebsd-64 set size:108331 disposed:false
+655 silly fetch manifest esbuild-windows-64@0.14.47
+656 silly packumentCache full:https://registry.npmmirror.com/esbuild-windows-64 cache-miss
+657 http fetch GET 200 https://registry.npmmirror.com/esbuild-linux-64 449ms (cache miss)
+658 silly packumentCache full:https://registry.npmmirror.com/esbuild-linux-64 set size:128401 disposed:false
+659 silly fetch manifest esbuild-windows-arm64@0.14.47
+660 silly packumentCache full:https://registry.npmmirror.com/esbuild-windows-arm64 cache-miss
+661 http fetch GET 200 https://registry.npmmirror.com/picocolors 458ms (cache revalidated)
+662 silly packumentCache full:https://registry.npmmirror.com/picocolors set size:15692 disposed:false
+663 silly fetch manifest @cspotcode/source-map-support@^0.8.0
+664 silly packumentCache full:https://registry.npmmirror.com/@cspotcode%2fsource-map-support cache-miss
+665 http fetch GET 200 https://registry.npmmirror.com/esbuild-linux-arm 415ms (cache miss)
+666 silly packumentCache full:https://registry.npmmirror.com/esbuild-linux-arm set size:90818 disposed:false
+667 silly fetch manifest @tsconfig/node10@^1.0.7
+668 silly packumentCache full:https://registry.npmmirror.com/@tsconfig%2fnode10 cache-miss
+669 http fetch GET 200 https://registry.npmmirror.com/esbuild-linux-riscv64 328ms (cache miss)
+670 silly packumentCache full:https://registry.npmmirror.com/esbuild-linux-riscv64 set size:48488 disposed:false
+671 silly fetch manifest @tsconfig/node12@^1.0.7
+672 silly packumentCache full:https://registry.npmmirror.com/@tsconfig%2fnode12 cache-miss
+673 http fetch GET 200 https://registry.npmmirror.com/esbuild-linux-mips64le 391ms (cache miss)
+674 silly packumentCache full:https://registry.npmmirror.com/esbuild-linux-mips64le set size:93906 disposed:false
+675 silly fetch manifest @tsconfig/node14@^1.0.0
+676 silly packumentCache full:https://registry.npmmirror.com/@tsconfig%2fnode14 cache-miss
+677 http fetch GET 200 https://registry.npmmirror.com/esbuild-linux-arm64 406ms (cache miss)
+678 silly packumentCache full:https://registry.npmmirror.com/esbuild-linux-arm64 set size:116126 disposed:false
+679 silly fetch manifest @tsconfig/node16@^1.0.2
+680 silly packumentCache full:https://registry.npmmirror.com/@tsconfig%2fnode16 cache-miss
+681 http fetch GET 200 https://registry.npmmirror.com/esbuild-android-arm64 796ms (cache miss)
+682 silly packumentCache full:https://registry.npmmirror.com/esbuild-android-arm64 set size:82789 disposed:false
+683 silly fetch manifest acorn-walk@^8.1.1
+684 silly packumentCache full:https://registry.npmmirror.com/acorn-walk cache-miss
+685 http fetch GET 200 https://registry.npmmirror.com/esbuild-linux-ppc64le 396ms (cache miss)
+686 silly packumentCache full:https://registry.npmmirror.com/esbuild-linux-ppc64le set size:114766 disposed:false
+687 silly fetch manifest arg@^4.1.0
+688 silly packumentCache full:https://registry.npmmirror.com/arg cache-hit
+689 silly fetch manifest create-require@^1.1.0
+690 silly packumentCache full:https://registry.npmmirror.com/create-require cache-miss
+691 http fetch GET 200 https://registry.npmmirror.com/esbuild-sunos-64 395ms (cache miss)
+692 silly packumentCache full:https://registry.npmmirror.com/esbuild-sunos-64 set size:71459 disposed:false
+693 silly fetch manifest diff@^4.0.1
+694 silly packumentCache full:https://registry.npmmirror.com/diff cache-miss
+695 http fetch GET 200 https://registry.npmmirror.com/esbuild-linux-s390x 422ms (cache miss)
+696 silly packumentCache full:https://registry.npmmirror.com/esbuild-linux-s390x set size:59222 disposed:false
+697 silly fetch manifest make-error@^1.1.1
+698 silly packumentCache full:https://registry.npmmirror.com/make-error cache-miss
+699 http fetch GET 200 https://registry.npmmirror.com/esbuild-openbsd-64 412ms (cache miss)
+700 silly packumentCache full:https://registry.npmmirror.com/esbuild-openbsd-64 set size:77740 disposed:false
+701 silly fetch manifest v8-compile-cache-lib@^3.0.1
+702 silly packumentCache full:https://registry.npmmirror.com/v8-compile-cache-lib cache-miss
+703 http fetch GET 200 https://registry.npmmirror.com/@cspotcode%2fsource-map-support 432ms (cache miss)
+704 silly packumentCache full:https://registry.npmmirror.com/@cspotcode%2fsource-map-support set size:7945 disposed:false
+705 silly fetch manifest yn@3.1.1
+706 silly packumentCache full:https://registry.npmmirror.com/yn cache-miss
+707 http fetch GET 200 https://registry.npmmirror.com/esbuild-windows-32 459ms (cache miss)
+708 silly packumentCache full:https://registry.npmmirror.com/esbuild-windows-32 set size:105999 disposed:false
+709 http fetch GET 200 https://registry.npmmirror.com/esbuild-windows-arm64 451ms (cache miss)
+710 silly packumentCache full:https://registry.npmmirror.com/esbuild-windows-arm64 set size:73137 disposed:false
+711 http fetch GET 200 https://registry.npmmirror.com/esbuild-windows-64 464ms (cache miss)
+712 silly packumentCache full:https://registry.npmmirror.com/esbuild-windows-64 set size:129282 disposed:false
+713 http fetch GET 200 https://registry.npmmirror.com/@tsconfig%2fnode14 412ms (cache miss)
+714 silly packumentCache full:https://registry.npmmirror.com/@tsconfig%2fnode14 set size:4876 disposed:false
+715 http fetch GET 200 https://registry.npmmirror.com/@tsconfig%2fnode16 399ms (cache miss)
+716 silly packumentCache full:https://registry.npmmirror.com/@tsconfig%2fnode16 set size:4937 disposed:false
+717 http fetch GET 200 https://registry.npmmirror.com/acorn-walk 379ms (cache miss)
+718 silly packumentCache full:https://registry.npmmirror.com/acorn-walk set size:8053 disposed:false
+719 http fetch GET 200 https://registry.npmmirror.com/create-require 371ms (cache miss)
+720 silly packumentCache full:https://registry.npmmirror.com/create-require set size:3124 disposed:false
+721 http fetch GET 200 https://registry.npmmirror.com/v8-compile-cache-lib 404ms (cache miss)
+722 silly packumentCache full:https://registry.npmmirror.com/v8-compile-cache-lib set size:4118 disposed:false
+723 http fetch GET 200 https://registry.npmmirror.com/yn 365ms (cache miss)
+724 silly packumentCache full:https://registry.npmmirror.com/yn set size:4209 disposed:false
+725 http fetch GET 200 https://registry.npmmirror.com/diff 425ms (cache miss)
+726 silly packumentCache full:https://registry.npmmirror.com/diff set size:30983 disposed:false
+727 http fetch GET 200 https://registry.npmmirror.com/make-error 431ms (cache miss)
+728 silly packumentCache full:https://registry.npmmirror.com/make-error set size:8640 disposed:false
+729 http fetch GET 200 https://registry.npmmirror.com/@tsconfig%2fnode10 947ms (cache miss)
+730 silly packumentCache full:https://registry.npmmirror.com/@tsconfig%2fnode10 set size:4727 disposed:false
+731 http fetch GET 200 https://registry.npmmirror.com/esbuild-android-64 2399ms (cache miss)
+732 silly packumentCache full:https://registry.npmmirror.com/esbuild-android-64 set size:45799 disposed:false
+733 http fetch GET 200 https://registry.npmmirror.com/esbuild-netbsd-64 10065ms (cache miss)
+734 silly packumentCache full:https://registry.npmmirror.com/esbuild-netbsd-64 set size:68368 disposed:false
+735 http fetch GET 200 https://registry.npmmirror.com/@tsconfig%2fnode12 13412ms (cache miss)
+736 silly packumentCache full:https://registry.npmmirror.com/@tsconfig%2fnode12 set size:6837 disposed:false
+737 silly placeDep node_modules/vercel/node_modules/@vercel/redwood semver@6.3.1 OK for: @vercel/redwood@2.3.4 want: 6.3.1
+738 silly placeDep node_modules/vercel @vercel/gatsby-plugin-vercel-analytics@1.0.11 OK for: @vercel/static-build@2.7.16 want: 1.0.11
+739 silly placeDep node_modules/vercel @vercel/gatsby-plugin-vercel-builder@2.0.90 OK for: @vercel/static-build@2.7.16 want: 2.0.90
+740 silly fetch manifest web-vitals@0.2.4
+741 silly packumentCache full:https://registry.npmmirror.com/web-vitals cache-miss
+742 silly fetch manifest @sinclair/typebox@0.25.24
+743 silly packumentCache full:https://registry.npmmirror.com/@sinclair%2ftypebox cache-miss
+744 silly fetch manifest fs-extra@11.1.0
+745 silly packumentCache full:https://registry.npmmirror.com/fs-extra cache-miss
+746 http fetch GET 200 https://registry.npmmirror.com/web-vitals 58ms (cache miss)
+747 silly packumentCache full:https://registry.npmmirror.com/web-vitals set size:79628 disposed:false
+748 http fetch GET 200 https://registry.npmmirror.com/fs-extra 383ms (cache revalidated)
+749 silly packumentCache full:https://registry.npmmirror.com/fs-extra set size:208205 disposed:false
+750 http fetch GET 200 https://registry.npmmirror.com/@sinclair%2ftypebox 438ms (cache miss)
+751 silly packumentCache full:https://registry.npmmirror.com/@sinclair%2ftypebox set size:226162 disposed:false
+752 silly placeDep node_modules/vercel web-vitals@0.2.4 OK for: @vercel/gatsby-plugin-vercel-analytics@1.0.11 want: 0.2.4
+753 silly placeDep node_modules/vercel @sinclair/typebox@0.25.24 OK for: @vercel/gatsby-plugin-vercel-builder@2.0.90 want: 0.25.24
+754 silly placeDep node_modules/vercel fs-extra@11.1.0 OK for: @vercel/gatsby-plugin-vercel-builder@2.0.90 want: 11.1.0
+755 silly fetch manifest jsonfile@^6.0.1
+756 silly packumentCache full:https://registry.npmmirror.com/jsonfile cache-miss
+757 silly fetch manifest universalify@^2.0.0
+758 silly packumentCache full:https://registry.npmmirror.com/universalify cache-miss
+759 http fetch GET 200 https://registry.npmmirror.com/jsonfile 93ms (cache revalidated)
+760 silly packumentCache full:https://registry.npmmirror.com/jsonfile set size:42758 disposed:false
+761 http fetch GET 200 https://registry.npmmirror.com/universalify 94ms (cache revalidated)
+762 silly packumentCache full:https://registry.npmmirror.com/universalify set size:15581 disposed:false
+763 silly placeDep node_modules/vercel ajv@8.6.3 OK for: @vercel/static-config@3.1.1 want: 8.6.3
+764 silly placeDep node_modules/vercel json-schema-to-ts@1.6.4 OK for: @vercel/static-config@3.1.1 want: 1.6.4
+765 silly fetch manifest fast-deep-equal@^3.1.1
+766 silly packumentCache full:https://registry.npmmirror.com/fast-deep-equal cache-miss
+767 silly fetch manifest json-schema-traverse@^1.0.0
+768 silly packumentCache full:https://registry.npmmirror.com/json-schema-traverse cache-miss
+769 silly fetch manifest require-from-string@^2.0.2
+770 silly packumentCache full:https://registry.npmmirror.com/require-from-string cache-miss
+771 silly fetch manifest uri-js@^4.2.2
+772 silly packumentCache full:https://registry.npmmirror.com/uri-js cache-miss
+773 silly fetch manifest @types/json-schema@^7.0.6
+774 silly packumentCache full:https://registry.npmmirror.com/@types%2fjson-schema cache-miss
+775 silly fetch manifest ts-toolbelt@^6.15.5
+776 silly packumentCache full:https://registry.npmmirror.com/ts-toolbelt cache-miss
+777 http fetch GET 200 https://registry.npmmirror.com/json-schema-traverse 378ms (cache miss)
+778 silly packumentCache full:https://registry.npmmirror.com/json-schema-traverse set size:4662 disposed:false
+779 http fetch GET 200 https://registry.npmmirror.com/fast-deep-equal 381ms (cache miss)
+780 silly packumentCache full:https://registry.npmmirror.com/fast-deep-equal set size:6487 disposed:false
+781 http fetch GET 200 https://registry.npmmirror.com/require-from-string 406ms (cache miss)
+782 silly packumentCache full:https://registry.npmmirror.com/require-from-string set size:3441 disposed:false
+783 http fetch GET 200 https://registry.npmmirror.com/@types%2fjson-schema 630ms (cache miss)
+784 silly packumentCache full:https://registry.npmmirror.com/@types%2fjson-schema set size:8358 disposed:false
+785 http fetch GET 200 https://registry.npmmirror.com/uri-js 1400ms (cache miss)
+786 silly packumentCache full:https://registry.npmmirror.com/uri-js set size:8117 disposed:false
+787 http fetch GET 200 https://registry.npmmirror.com/ts-toolbelt 12938ms (cache miss)
+788 silly packumentCache full:https://registry.npmmirror.com/ts-toolbelt set size:239448 disposed:false
+789 silly placeDep node_modules/vercel fast-deep-equal@3.1.3 OK for: ajv@8.6.3 want: ^3.1.1
+790 silly placeDep node_modules/vercel json-schema-traverse@1.0.0 OK for: ajv@8.6.3 want: ^1.0.0
+791 silly placeDep node_modules/vercel require-from-string@2.0.2 OK for: ajv@8.6.3 want: ^2.0.2
+792 silly placeDep node_modules/vercel uri-js@4.4.1 OK for: ajv@8.6.3 want: ^4.2.2
+793 silly fetch manifest punycode@^2.1.0
+794 silly packumentCache full:https://registry.npmmirror.com/punycode cache-miss
+795 http fetch GET 200 https://registry.npmmirror.com/punycode 413ms (cache miss)
+796 silly packumentCache full:https://registry.npmmirror.com/punycode set size:14294 disposed:false
+797 silly placeDep node_modules/vercel retry@0.13.1 OK for: async-retry@1.3.3 want: 0.13.1
+798 silly placeDep node_modules/vercel file-uri-to-path@1.0.0 OK for: bindings@1.5.0 want: 1.0.0
+799 silly placeDep node_modules/vercel readdirp@4.1.2 OK for: chokidar@4.0.0 want: ^4.0.1
+800 silly placeDep node_modules/vercel/node_modules/debug ms@2.1.2 OK for: debug@4.3.4 want: 2.1.2
+801 silly placeDep node_modules/vercel @edge-runtime/format@2.2.1 OK for: edge-runtime@2.5.9 want: 2.2.1
+802 silly placeDep node_modules/vercel @edge-runtime/ponyfill@2.4.2 OK for: edge-runtime@2.5.9 want: 2.4.2
+803 silly placeDep node_modules/vercel/node_modules/edge-runtime async-listen@3.0.1 OK for: edge-runtime@2.5.9 want: 3.0.1
+804 silly placeDep node_modules/vercel mri@1.2.0 OK for: edge-runtime@2.5.9 want: 1.2.0
+805 silly placeDep node_modules/vercel picocolors@1.0.0 OK for: edge-runtime@2.5.9 want: 1.0.0
+806 silly placeDep node_modules/vercel pretty-ms@7.0.1 OK for: edge-runtime@2.5.9 want: 7.0.1
+807 silly placeDep node_modules/vercel signal-exit@4.0.2 OK for: edge-runtime@2.5.9 want: 4.0.2
+808 silly placeDep node_modules/vercel time-span@4.0.0 OK for: edge-runtime@2.5.9 want: 4.0.0
+809 silly fetch manifest parse-ms@^2.1.0
+810 silly packumentCache full:https://registry.npmmirror.com/parse-ms cache-miss
+811 silly fetch manifest convert-hrtime@^3.0.0
+812 silly packumentCache full:https://registry.npmmirror.com/convert-hrtime cache-miss
+813 http fetch GET 200 https://registry.npmmirror.com/parse-ms 137ms (cache miss)
+814 silly packumentCache full:https://registry.npmmirror.com/parse-ms set size:3771 disposed:false
+815 http fetch GET 200 https://registry.npmmirror.com/convert-hrtime 389ms (cache miss)
+816 silly packumentCache full:https://registry.npmmirror.com/convert-hrtime set size:2478 disposed:false
+817 silly placeDep node_modules/vercel esbuild-android-64@0.14.47 OK for: esbuild@0.14.47 want: 0.14.47
+818 silly placeDep node_modules/vercel esbuild-android-arm64@0.14.47 OK for: esbuild@0.14.47 want: 0.14.47
+819 silly placeDep node_modules/vercel esbuild-darwin-64@0.14.47 OK for: esbuild@0.14.47 want: 0.14.47
+820 silly placeDep node_modules/vercel esbuild-darwin-arm64@0.14.47 OK for: esbuild@0.14.47 want: 0.14.47
+821 silly placeDep node_modules/vercel esbuild-freebsd-64@0.14.47 OK for: esbuild@0.14.47 want: 0.14.47
+822 silly placeDep node_modules/vercel esbuild-freebsd-arm64@0.14.47 OK for: esbuild@0.14.47 want: 0.14.47
+823 silly placeDep node_modules/vercel esbuild-linux-32@0.14.47 OK for: esbuild@0.14.47 want: 0.14.47
+824 silly placeDep node_modules/vercel esbuild-linux-64@0.14.47 OK for: esbuild@0.14.47 want: 0.14.47
+825 silly placeDep node_modules/vercel esbuild-linux-arm@0.14.47 OK for: esbuild@0.14.47 want: 0.14.47
+826 silly placeDep node_modules/vercel esbuild-linux-arm64@0.14.47 OK for: esbuild@0.14.47 want: 0.14.47
+827 silly placeDep node_modules/vercel esbuild-linux-mips64le@0.14.47 OK for: esbuild@0.14.47 want: 0.14.47
+828 silly placeDep node_modules/vercel esbuild-linux-ppc64le@0.14.47 OK for: esbuild@0.14.47 want: 0.14.47
+829 silly placeDep node_modules/vercel esbuild-linux-riscv64@0.14.47 OK for: esbuild@0.14.47 want: 0.14.47
+830 silly placeDep node_modules/vercel esbuild-linux-s390x@0.14.47 OK for: esbuild@0.14.47 want: 0.14.47
+831 silly placeDep node_modules/vercel esbuild-netbsd-64@0.14.47 OK for: esbuild@0.14.47 want: 0.14.47
+832 silly placeDep node_modules/vercel esbuild-openbsd-64@0.14.47 OK for: esbuild@0.14.47 want: 0.14.47
+833 silly placeDep node_modules/vercel esbuild-sunos-64@0.14.47 OK for: esbuild@0.14.47 want: 0.14.47
+834 silly placeDep node_modules/vercel esbuild-windows-32@0.14.47 OK for: esbuild@0.14.47 want: 0.14.47
+835 silly placeDep node_modules/vercel esbuild-windows-64@0.14.47 OK for: esbuild@0.14.47 want: 0.14.47
+836 silly placeDep node_modules/vercel esbuild-windows-arm64@0.14.47 OK for: esbuild@0.14.47 want: 0.14.47
+837 silly placeDep node_modules/vercel jsonfile@6.1.0 OK for: fs-extra@11.1.0 want: ^6.0.1
+838 silly placeDep node_modules/vercel universalify@2.0.1 OK for: fs-extra@11.1.0 want: ^2.0.0
+839 silly placeDep node_modules/vercel foreground-child@3.3.1 OK for: glob@10.4.5 want: ^3.1.0
+840 silly placeDep node_modules/vercel jackspeak@3.4.3 OK for: glob@10.4.5 want: ^3.1.2
+841 silly placeDep node_modules/vercel minimatch@9.0.5 OK for: glob@10.4.5 want: ^9.0.4
+842 silly placeDep node_modules/vercel minipass@7.1.2 OK for: glob@10.4.5 want: ^7.1.2
+843 silly placeDep node_modules/vercel package-json-from-dist@1.0.1 OK for: glob@10.4.5 want: ^1.0.0
+844 silly placeDep node_modules/vercel path-scurry@1.11.1 OK for: glob@10.4.5 want: ^1.11.1
+845 silly fetch manifest cross-spawn@^7.0.6
+846 silly packumentCache full:https://registry.npmmirror.com/cross-spawn cache-miss
+847 silly fetch manifest @isaacs/cliui@^8.0.2
+848 silly packumentCache full:https://registry.npmmirror.com/@isaacs%2fcliui cache-miss
+849 silly fetch manifest @pkgjs/parseargs@^0.11.0
+850 silly packumentCache full:https://registry.npmmirror.com/@pkgjs%2fparseargs cache-miss
+851 silly fetch manifest brace-expansion@^2.0.1
+852 silly packumentCache full:https://registry.npmmirror.com/brace-expansion cache-miss
+853 silly fetch manifest lru-cache@^10.2.0
+854 silly packumentCache full:https://registry.npmmirror.com/lru-cache cache-hit
+855 http fetch GET 200 https://registry.npmmirror.com/@isaacs%2fcliui 55ms (cache miss)
+856 silly packumentCache full:https://registry.npmmirror.com/@isaacs%2fcliui set size:3852 disposed:false
+857 http fetch GET 200 https://registry.npmmirror.com/@pkgjs%2fparseargs 62ms (cache miss)
+858 silly packumentCache full:https://registry.npmmirror.com/@pkgjs%2fparseargs set size:19394 disposed:false
+859 http fetch GET 200 https://registry.npmmirror.com/cross-spawn 378ms (cache miss)
+860 silly packumentCache full:https://registry.npmmirror.com/cross-spawn set size:19398 disposed:false
+861 http fetch GET 200 https://registry.npmmirror.com/brace-expansion 409ms (cache miss)
+862 silly packumentCache full:https://registry.npmmirror.com/brace-expansion set size:10160 disposed:false
+863 silly placeDep node_modules/vercel cross-spawn@7.0.6 OK for: foreground-child@3.3.1 want: ^7.0.6
+864 silly fetch manifest path-key@^3.1.0
+865 silly packumentCache full:https://registry.npmmirror.com/path-key cache-miss
+866 silly fetch manifest shebang-command@^2.0.0
+867 silly packumentCache full:https://registry.npmmirror.com/shebang-command cache-miss
+868 silly fetch manifest which@^2.0.1
+869 silly packumentCache full:https://registry.npmmirror.com/which cache-miss
+870 http fetch GET 200 https://registry.npmmirror.com/path-key 384ms (cache miss)
+871 silly packumentCache full:https://registry.npmmirror.com/path-key set size:3439 disposed:false
+872 http fetch GET 200 https://registry.npmmirror.com/shebang-command 391ms (cache miss)
+873 silly packumentCache full:https://registry.npmmirror.com/shebang-command set size:2106 disposed:false
+874 http fetch GET 200 https://registry.npmmirror.com/which 416ms (cache miss)
+875 silly packumentCache full:https://registry.npmmirror.com/which set size:13380 disposed:false
+876 silly placeDep node_modules/vercel path-key@3.1.1 OK for: cross-spawn@7.0.6 want: ^3.1.0
+877 silly placeDep node_modules/vercel shebang-command@2.0.0 OK for: cross-spawn@7.0.6 want: ^2.0.0
+878 silly placeDep node_modules/vercel which@2.0.2 OK for: cross-spawn@7.0.6 want: ^2.0.1
+879 silly fetch manifest shebang-regex@^3.0.0
+880 silly packumentCache full:https://registry.npmmirror.com/shebang-regex cache-miss
+881 silly fetch manifest isexe@^2.0.0
+882 silly packumentCache full:https://registry.npmmirror.com/isexe cache-miss
+883 http fetch GET 200 https://registry.npmmirror.com/shebang-regex 402ms (cache miss)
+884 silly packumentCache full:https://registry.npmmirror.com/shebang-regex set size:2417 disposed:false
+885 http fetch GET 200 https://registry.npmmirror.com/isexe 433ms (cache miss)
+886 silly packumentCache full:https://registry.npmmirror.com/isexe set size:4993 disposed:false
+887 silly placeDep node_modules/vercel agent-base@7.1.4 OK for: https-proxy-agent@7.0.6 want: ^7.1.2
+888 silly placeDep node_modules/vercel @isaacs/cliui@8.0.2 OK for: jackspeak@3.4.3 want: ^8.0.2
+889 silly placeDep node_modules/vercel @pkgjs/parseargs@0.11.0 OK for: jackspeak@3.4.3 want: ^0.11.0
+890 silly fetch manifest string-width@^5.1.2
+891 silly packumentCache full:https://registry.npmmirror.com/string-width cache-miss
+892 silly fetch manifest string-width-cjs@npm:string-width@^4.2.0
+893 silly packumentCache full:https://registry.npmmirror.com/string-width cache-miss
+894 silly fetch manifest strip-ansi@^7.0.1
+895 silly packumentCache full:https://registry.npmmirror.com/strip-ansi cache-miss
+896 silly fetch manifest strip-ansi-cjs@npm:strip-ansi@^6.0.1
+897 silly packumentCache full:https://registry.npmmirror.com/strip-ansi cache-miss
+898 silly fetch manifest wrap-ansi@^8.1.0
+899 silly packumentCache full:https://registry.npmmirror.com/wrap-ansi cache-miss
+900 silly fetch manifest wrap-ansi-cjs@npm:wrap-ansi@^7.0.0
+901 silly packumentCache full:https://registry.npmmirror.com/wrap-ansi cache-miss
+902 http fetch GET 200 https://registry.npmmirror.com/string-width 86ms (cache revalidated)
+903 silly packumentCache full:https://registry.npmmirror.com/string-width set size:51347 disposed:false
+904 http fetch GET 200 https://registry.npmmirror.com/string-width 88ms (cache revalidated)
+905 silly packumentCache full:https://registry.npmmirror.com/string-width set size:51347 disposed:false
+906 silly packumentCache full:https://registry.npmmirror.com/string-width dispose
+907 http fetch GET 200 https://registry.npmmirror.com/wrap-ansi 406ms (cache revalidated)
+908 silly packumentCache full:https://registry.npmmirror.com/wrap-ansi set size:42452 disposed:false
+909 http fetch GET 200 https://registry.npmmirror.com/wrap-ansi 411ms (cache revalidated)
+910 silly packumentCache full:https://registry.npmmirror.com/wrap-ansi set size:42452 disposed:false
+911 silly packumentCache full:https://registry.npmmirror.com/wrap-ansi dispose
+912 http fetch GET 200 https://registry.npmmirror.com/strip-ansi 1642ms (cache revalidated)
+913 silly packumentCache full:https://registry.npmmirror.com/strip-ansi set size:35455 disposed:false
+914 http fetch GET 200 https://registry.npmmirror.com/strip-ansi 1643ms (cache revalidated)
+915 silly packumentCache full:https://registry.npmmirror.com/strip-ansi set size:35455 disposed:false
+916 silly packumentCache full:https://registry.npmmirror.com/strip-ansi dispose
+917 silly placeDep node_modules/vercel string-width@5.1.2 OK for: @isaacs/cliui@8.0.2 want: ^5.1.2
+918 silly placeDep node_modules/vercel string-width-cjs@4.2.3 OK for: @isaacs/cliui@8.0.2 want: npm:string-width@^4.2.0
+919 silly placeDep node_modules/vercel strip-ansi@7.1.0 OK for: @isaacs/cliui@8.0.2 want: ^7.0.1
+920 silly placeDep node_modules/vercel strip-ansi-cjs@6.0.1 OK for: @isaacs/cliui@8.0.2 want: npm:strip-ansi@^6.0.1
+921 silly placeDep node_modules/vercel wrap-ansi@8.1.0 OK for: @isaacs/cliui@8.0.2 want: ^8.1.0
+922 silly placeDep node_modules/vercel wrap-ansi-cjs@7.0.0 OK for: @isaacs/cliui@8.0.2 want: npm:wrap-ansi@^7.0.0
+923 silly fetch manifest eastasianwidth@^0.2.0
+924 silly packumentCache full:https://registry.npmmirror.com/eastasianwidth cache-miss
+925 silly fetch manifest emoji-regex@^9.2.2
+926 silly packumentCache full:https://registry.npmmirror.com/emoji-regex cache-miss
+927 silly fetch manifest emoji-regex@^8.0.0
+928 silly packumentCache full:https://registry.npmmirror.com/emoji-regex cache-miss
+929 silly fetch manifest is-fullwidth-code-point@^3.0.0
+930 silly packumentCache full:https://registry.npmmirror.com/is-fullwidth-code-point cache-miss
+931 silly fetch manifest strip-ansi@^6.0.1
+932 silly packumentCache full:https://registry.npmmirror.com/strip-ansi cache-hit
+933 silly fetch manifest ansi-regex@^6.0.1
+934 silly packumentCache full:https://registry.npmmirror.com/ansi-regex cache-miss
+935 silly fetch manifest ansi-regex@^5.0.1
+936 silly packumentCache full:https://registry.npmmirror.com/ansi-regex cache-miss
+937 silly fetch manifest ansi-styles@^6.1.0
+938 silly packumentCache full:https://registry.npmmirror.com/ansi-styles cache-miss
+939 silly fetch manifest ansi-styles@^4.0.0
+940 silly packumentCache full:https://registry.npmmirror.com/ansi-styles cache-miss
+941 silly fetch manifest string-width@^4.1.0
+942 silly packumentCache full:https://registry.npmmirror.com/string-width cache-hit
+943 silly fetch manifest strip-ansi@^6.0.0
+944 silly packumentCache full:https://registry.npmmirror.com/strip-ansi cache-hit
+945 http fetch GET 200 https://registry.npmmirror.com/ansi-styles 91ms (cache revalidated)
+946 silly packumentCache full:https://registry.npmmirror.com/ansi-styles set size:56535 disposed:false
+947 http fetch GET 200 https://registry.npmmirror.com/ansi-styles 92ms (cache revalidated)
+948 silly packumentCache full:https://registry.npmmirror.com/ansi-styles set size:56535 disposed:false
+949 silly packumentCache full:https://registry.npmmirror.com/ansi-styles dispose
+950 http fetch GET 200 https://registry.npmmirror.com/ansi-regex 285ms (cache revalidated)
+951 silly packumentCache full:https://registry.npmmirror.com/ansi-regex set size:35701 disposed:false
+952 http fetch GET 200 https://registry.npmmirror.com/eastasianwidth 291ms (cache miss)
+953 silly packumentCache full:https://registry.npmmirror.com/eastasianwidth set size:2598 disposed:false
+954 http fetch GET 200 https://registry.npmmirror.com/ansi-regex 321ms (cache revalidated)
+955 silly packumentCache full:https://registry.npmmirror.com/ansi-regex set size:35701 disposed:false
+956 silly packumentCache full:https://registry.npmmirror.com/ansi-regex dispose
+957 http fetch GET 200 https://registry.npmmirror.com/emoji-regex 408ms (cache revalidated)
+958 silly packumentCache full:https://registry.npmmirror.com/emoji-regex set size:74604 disposed:false
+959 http fetch GET 200 https://registry.npmmirror.com/emoji-regex 410ms (cache revalidated)
+960 silly packumentCache full:https://registry.npmmirror.com/emoji-regex set size:74604 disposed:false
+961 silly packumentCache full:https://registry.npmmirror.com/emoji-regex dispose
+962 http fetch GET 200 https://registry.npmmirror.com/is-fullwidth-code-point 1012ms (cache revalidated)
+963 silly packumentCache full:https://registry.npmmirror.com/is-fullwidth-code-point set size:10734 disposed:false
+964 silly placeDep node_modules/vercel @types/json-schema@7.0.15 OK for: json-schema-to-ts@1.6.4 want: ^7.0.6
+965 silly placeDep node_modules/vercel ts-toolbelt@6.15.5 OK for: json-schema-to-ts@1.6.4 want: ^6.15.5
+966 silly placeDep node_modules/vercel arg@4.1.0 OK for: micro@9.3.5-canary.3 want: 4.1.0
+967 silly placeDep node_modules/vercel content-type@1.0.4 OK for: micro@9.3.5-canary.3 want: 1.0.4
+968 silly placeDep node_modules/vercel raw-body@2.4.1 OK for: micro@9.3.5-canary.3 want: 2.4.1
+969 silly fetch manifest bytes@3.1.0
+970 silly packumentCache full:https://registry.npmmirror.com/bytes cache-miss
+971 silly fetch manifest http-errors@1.7.3
+972 silly packumentCache full:https://registry.npmmirror.com/http-errors cache-hit
+973 silly fetch manifest iconv-lite@0.4.24
+974 silly packumentCache full:https://registry.npmmirror.com/iconv-lite cache-miss
+975 silly fetch manifest unpipe@1.0.0
+976 silly packumentCache full:https://registry.npmmirror.com/unpipe cache-miss
+977 http fetch GET 200 https://registry.npmmirror.com/iconv-lite 364ms (cache miss)
+978 silly packumentCache full:https://registry.npmmirror.com/iconv-lite set size:17004 disposed:false
+979 http fetch GET 200 https://registry.npmmirror.com/bytes 371ms (cache miss)
+980 silly packumentCache full:https://registry.npmmirror.com/bytes set size:9014 disposed:false
+981 http fetch GET 200 https://registry.npmmirror.com/unpipe 382ms (cache miss)
+982 silly packumentCache full:https://registry.npmmirror.com/unpipe set size:1492 disposed:false
+983 silly placeDep node_modules/vercel brace-expansion@2.0.2 OK for: minimatch@9.0.5 want: ^2.0.1
+984 silly fetch manifest balanced-match@^1.0.0
+985 silly packumentCache full:https://registry.npmmirror.com/balanced-match cache-miss
+986 http fetch GET 200 https://registry.npmmirror.com/balanced-match 358ms (cache miss)
+987 silly packumentCache full:https://registry.npmmirror.com/balanced-match set size:6837 disposed:false
+988 silly placeDep node_modules/vercel balanced-match@1.0.2 OK for: brace-expansion@2.0.2 want: ^1.0.0
+989 silly placeDep node_modules/vercel whatwg-url@5.0.0 OK for: node-fetch@2.6.7 want: ^5.0.0
+990 silly fetch manifest tr46@~0.0.3
+991 silly packumentCache full:https://registry.npmmirror.com/tr46 cache-miss
+992 silly fetch manifest webidl-conversions@^3.0.0
+993 silly packumentCache full:https://registry.npmmirror.com/webidl-conversions cache-miss
+994 http fetch GET 200 https://registry.npmmirror.com/tr46 365ms (cache revalidated)
+995 silly packumentCache full:https://registry.npmmirror.com/tr46 set size:41329 disposed:false
+996 http fetch GET 200 https://registry.npmmirror.com/webidl-conversions 373ms (cache updated)
+997 silly packumentCache full:https://registry.npmmirror.com/webidl-conversions set size:10000 disposed:false
+998 silly placeDep node_modules/vercel abbrev@3.0.1 OK for: nopt@8.1.0 want: ^3.0.0
+999 silly placeDep node_modules/vercel http-errors@1.4.0 OK for: path-match@1.2.4 want: ~1.4.0
+1000 silly placeDep node_modules/vercel/node_modules/path-match path-to-regexp@1.9.0 OK for: path-match@1.2.4 want: ^1.0.0
+1001 silly fetch manifest inherits@2.0.1
+1002 silly packumentCache full:https://registry.npmmirror.com/inherits cache-miss
+1003 silly fetch manifest statuses@>= 1.2.1 < 2
+1004 silly packumentCache full:https://registry.npmmirror.com/statuses cache-miss
+1005 silly fetch manifest isarray@0.0.1
+1006 silly packumentCache full:https://registry.npmmirror.com/isarray cache-miss
+1007 http fetch GET 200 https://registry.npmmirror.com/isarray 58ms (cache miss)
+1008 silly packumentCache full:https://registry.npmmirror.com/isarray set size:3703 disposed:false
+1009 http fetch GET 200 https://registry.npmmirror.com/inherits 376ms (cache revalidated)
+1010 silly packumentCache full:https://registry.npmmirror.com/inherits set size:11198 disposed:false
+1011 http fetch GET 200 https://registry.npmmirror.com/statuses 377ms (cache miss)
+1012 silly packumentCache full:https://registry.npmmirror.com/statuses set size:7676 disposed:false
+1013 silly placeDep node_modules/vercel inherits@2.0.1 OK for: http-errors@1.4.0 want: 2.0.1
+1014 silly placeDep node_modules/vercel statuses@1.5.0 OK for: http-errors@1.4.0 want: >= 1.2.1 < 2
+1015 silly placeDep node_modules/vercel lru-cache@10.4.3 OK for: path-scurry@1.11.1 want: ^10.2.0
+1016 silly placeDep node_modules/vercel parse-ms@2.1.0 OK for: pretty-ms@7.0.1 want: ^2.1.0
+1017 silly placeDep node_modules/vercel bytes@3.1.0 OK for: raw-body@2.4.1 want: 3.1.0
+1018 silly placeDep node_modules/vercel/node_modules/raw-body http-errors@1.7.3 OK for: raw-body@2.4.1 want: 1.7.3
+1019 silly placeDep node_modules/vercel iconv-lite@0.4.24 OK for: raw-body@2.4.1 want: 0.4.24
+1020 silly placeDep node_modules/vercel unpipe@1.0.0 OK for: raw-body@2.4.1 want: 1.0.0
+1021 silly fetch manifest depd@~1.1.2
+1022 silly packumentCache full:https://registry.npmmirror.com/depd cache-miss
+1023 silly fetch manifest inherits@2.0.4
+1024 silly packumentCache full:https://registry.npmmirror.com/inherits cache-hit
+1025 silly fetch manifest setprototypeof@1.1.1
+1026 silly packumentCache full:https://registry.npmmirror.com/setprototypeof cache-miss
+1027 silly fetch manifest toidentifier@1.0.0
+1028 silly packumentCache full:https://registry.npmmirror.com/toidentifier cache-miss
+1029 silly fetch manifest safer-buffer@>= 2.1.2 < 3
+1030 silly packumentCache full:https://registry.npmmirror.com/safer-buffer cache-miss
+1031 http fetch GET 200 https://registry.npmmirror.com/setprototypeof 424ms (cache miss)
+1032 silly packumentCache full:https://registry.npmmirror.com/setprototypeof set size:3278 disposed:false
+1033 http fetch GET 200 https://registry.npmmirror.com/toidentifier 444ms (cache miss)
+1034 silly packumentCache full:https://registry.npmmirror.com/toidentifier set size:3571 disposed:false
+1035 http fetch GET 200 https://registry.npmmirror.com/safer-buffer 447ms (cache miss)
+1036 silly packumentCache full:https://registry.npmmirror.com/safer-buffer set size:6036 disposed:false
+1037 http fetch GET 200 https://registry.npmmirror.com/depd 971ms (cache miss)
+1038 silly packumentCache full:https://registry.npmmirror.com/depd set size:8763 disposed:false
+1039 silly placeDep node_modules/vercel safer-buffer@2.1.2 OK for: iconv-lite@0.4.24 want: >= 2.1.2 < 3
+1040 silly placeDep node_modules/vercel/node_modules/semver lru-cache@6.0.0 OK for: semver@7.5.4 want: ^6.0.0
+1041 silly placeDep node_modules/vercel shebang-regex@3.0.0 OK for: shebang-command@2.0.0 want: ^3.0.0
+1042 silly placeDep node_modules/vercel any-promise@1.3.0 OK for: stream-to-promise@2.2.0 want: ~1.3.0
+1043 silly placeDep node_modules/vercel end-of-stream@1.1.0 OK for: stream-to-promise@2.2.0 want: ~1.1.0
+1044 silly placeDep node_modules/vercel stream-to-array@2.3.0 OK for: stream-to-promise@2.2.0 want: ~2.3.0
+1045 silly fetch manifest once@~1.3.0
+1046 silly packumentCache full:https://registry.npmmirror.com/once cache-miss

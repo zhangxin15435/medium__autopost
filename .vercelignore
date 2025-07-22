@@ -1,0 +1,53 @@
+# 开发和测试文件
+test/
+scripts/
+docs/
+.specstory/
+.npm-cache/
+.git/
+.github/
+
+# 示例和模板文件
+templates/
+publish-example.js
+example-*.json
+example-*.csv
+my-articles.csv
+
+# 文档文件
+*.md
+!README.md
+deploy.sh
+deploy.bat
+
+# 日志和缓存
+logs/
+*.log
+debug-*.png
+*-test-*.json
+*-report-*.json
+
+# IDE文件
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 环境文件
+.env
+.env.local
+.env.example
+env.example.txt
+
+# Cookie和临时文件  
+cookies.json
+temp/
+tmp/
+
+# 大文件
+available_models.json
+
+# 文章存储（根据需要调整）
+articles/drafts/
+articles/published/
+articles/templates/ 

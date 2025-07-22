@@ -14,6 +14,16 @@ module.exports = async (req, res) => {
     try {
         logger.info('收到手动发布请求');
 
+        // 设置CORS头
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+        res.setHeader('Access-Control-Allow-Headers', 'Content-Type, X-API-Key');
+
+        // 处理OPTIONS预检请求
+        if (req.method === 'OPTIONS') {
+            return ResponseUtils.vercelResponse(res, 200, { message: 'OK' });
+        }
+
         // 验证请求方法
         if (req.method !== 'POST') {
             return ResponseUtils.vercelResponse(

@@ -19,6 +19,16 @@ module.exports = async (req, res) => {
     try {
         logger.info(`收到文章管理请求: ${req.method}`);
 
+        // 设置CORS头
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+        res.setHeader('Access-Control-Allow-Headers', 'Content-Type, X-API-Key');
+
+        // 处理OPTIONS预检请求
+        if (req.method === 'OPTIONS') {
+            return ResponseUtils.vercelResponse(res, 200, { message: 'OK' });
+        }
+
         // 验证API密钥（如果配置了的话）
         const apiKey = req.headers['x-api-key'] || req.body?.apiKey || req.query?.apiKey;
         if (process.env.API_SECRET_KEY && !ValidationUtils.validateApiKey(apiKey)) {
@@ -65,99 +75,58 @@ module.exports = async (req, res) => {
 
 /**
  * 获取文章列表
- * 支持查询参数: status, limit, offset
  */
 async function handleGetArticles(req, res) {
     try {
         const { status, limit = 50, offset = 0 } = req.query;
 
-        // 获取待发布文章
-        const pendingArticles = await articleManager.getPendingArticles();
-
-        // 获取已发布文章
-        const publishedDir = path.join(process.cwd(), 'articles', 'published');
-        let publishedArticles = [];
-
-        try {
-            const publishedFiles = await fs.readdir(publishedDir);
-            for (const file of publishedFiles) {
-                if (file.endsWith('.json')) {
-                    const filePath = path.join(publishedDir, file);
-                    const articleData = await fs.readJson(filePath);
-                    publishedArticles.push({
-                        ...articleData,
-                        fileName: file,
-                        filePath: filePath,
-                        status: 'published'
-                    });
-                }
-            }
-        } catch (error) {
-            // 如果目录不存在或读取失败，忽略错误
-            logger.debug('读取已发布文章目录失败:', error.message);
-        }
-
-        // 合并所有文章
-        let allArticles = [
-            ...pendingArticles.map(article => ({ ...article, status: article.status || 'pending' })),
-            ...publishedArticles
-        ];
+        // 获取所有文章
+        const allArticles = await articleManager.getAllArticles();
 
         // 按状态过滤
+        let filteredArticles = allArticles;
         if (status) {
-            allArticles = allArticles.filter(article => article.status === status);
+            filteredArticles = allArticles.filter(article => article.status === status);
         }
-
-        // 按创建时间排序
-        allArticles.sort((a, b) => {
-            const dateA = new Date(a.createdAt || a.scheduledTime || '1970-01-01');
-            const dateB = new Date(b.createdAt || b.scheduledTime || '1970-01-01');
-            return dateB.getTime() - dateA.getTime();
-        });
 
         // 分页
         const startIndex = parseInt(offset);
         const endIndex = startIndex + parseInt(limit);
-        const paginatedArticles = allArticles.slice(startIndex, endIndex);
+        const paginatedArticles = filteredArticles.slice(startIndex, endIndex);
 
-        // 格式化返回数据
-        const formattedArticles = paginatedArticles.map(article => ({
-            fileName: article.fileName,
-            title: article.title,
-            subtitle: article.subtitle,
-            status: article.status,
-            scheduledTime: article.scheduledTime,
-            createdAt: article.createdAt,
-            publishedAt: article.publishedAt,
-            tags: article.tags,
-            contentPreview: article.content ? article.content.substring(0, 200) + '...' : '',
-            url: article.publishResult?.url || null,
-            scheduledTimeFormatted: article.scheduledTime ? TimeUtils.formatPublishTime(article.scheduledTime) : null
-        }));
-
-        const result = {
-            articles: formattedArticles,
-            pagination: {
-                total: allArticles.length,
-                limit: parseInt(limit),
-                offset: parseInt(offset),
-                hasMore: endIndex < allArticles.length
-            },
-            summary: {
-                pending: allArticles.filter(a => a.status === 'pending' || a.status === 'scheduled').length,
-                published: allArticles.filter(a => a.status === 'published').length
-            }
+        // 添加统计信息
+        const stats = {
+            total: allArticles.length,
+            pending: allArticles.filter(a => a.status === 'pending').length,
+            publishing: allArticles.filter(a => a.status === 'publishing').length,
+            published: allArticles.filter(a => a.status === 'published').length,
+            error: allArticles.filter(a => a.status === 'error').length
         };
+
+        logger.info(`返回 ${paginatedArticles.length} 篇文章`);
 
         return ResponseUtils.vercelResponse(
             res,
             200,
-            ResponseUtils.success(result, '获取文章列表成功')
+            ResponseUtils.success({
+                articles: paginatedArticles,
+                stats: stats,
+                pagination: {
+                    total: filteredArticles.length,
+                    limit: parseInt(limit),
+                    offset: startIndex,
+                    hasMore: endIndex < filteredArticles.length
+                }
+            }, '获取文章列表成功')
         );
 
     } catch (error) {
         logger.error('获取文章列表失败:', error);
-        throw error;
+        return ResponseUtils.vercelResponse(
+            res,
+            500,
+            ResponseUtils.error('获取文章列表失败', error)
+        );
     }
 }
 
@@ -182,53 +151,42 @@ async function handleCreateArticle(req, res) {
             return ResponseUtils.vercelResponse(
                 res,
                 400,
-                ResponseUtils.error('文章数据验证失败', { errors: validation.errors })
+                ResponseUtils.error('文章数据验证失败', validation.errors)
             );
         }
 
-        // 验证发布时间（如果有）
-        if (article.scheduledTime) {
-            const scheduledTime = new Date(article.scheduledTime);
-            if (isNaN(scheduledTime.getTime())) {
-                return ResponseUtils.vercelResponse(
-                    res,
-                    400,
-                    ResponseUtils.error('发布时间格式无效')
-                );
-            }
-        }
-
-        // 生成文件名
-        const timestamp = Date.now();
-        const fileName = `article-${timestamp}.json`;
-        const filePath = path.join(process.cwd(), 'articles', 'drafts', fileName);
-
-        // 准备文章数据
-        const articleData = {
-            ...article,
-            status: article.scheduledTime ? 'scheduled' : 'pending',
+        // 创建文章对象
+        const newArticle = {
+            id: `article-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+            title: article.title,
+            subtitle: article.subtitle || '',
+            content: article.content,
+            tags: Array.isArray(article.tags) ? article.tags : [],
+            status: 'pending',
             createdAt: new Date().toISOString(),
-            source: 'api'
+            updatedAt: new Date().toISOString(),
+            scheduledTime: article.scheduledTime || null,
+            source: 'web-interface'
         };
 
         // 保存文章
-        await fs.ensureDir(path.dirname(filePath));
-        await fs.writeJson(filePath, articleData, { spaces: 2 });
+        await articleManager.saveArticle(newArticle);
 
-        logger.info(`新文章已创建: ${fileName}`);
+        logger.info(`创建新文章: ${newArticle.title}`);
 
         return ResponseUtils.vercelResponse(
             res,
             201,
-            ResponseUtils.success(
-                { fileName, article: articleData },
-                '文章创建成功'
-            )
+            ResponseUtils.success(newArticle, '文章创建成功')
         );
 
     } catch (error) {
         logger.error('创建文章失败:', error);
-        throw error;
+        return ResponseUtils.vercelResponse(
+            res,
+            500,
+            ResponseUtils.error('创建文章失败', error)
+        );
     }
 }
 
@@ -237,32 +195,19 @@ async function handleCreateArticle(req, res) {
  */
 async function handleUpdateArticle(req, res) {
     try {
-        const { fileName, article } = req.body;
+        const { articleId, updates } = req.body;
 
-        if (!fileName || !article) {
+        if (!articleId || !updates) {
             return ResponseUtils.vercelResponse(
                 res,
                 400,
-                ResponseUtils.error('缺少文件名或文章数据')
+                ResponseUtils.error('缺少文章ID或更新数据')
             );
         }
 
-        // 验证文章数据
-        const validation = ValidationUtils.validateArticle(article);
-        if (!validation.isValid) {
-            return ResponseUtils.vercelResponse(
-                res,
-                400,
-                ResponseUtils.error('文章数据验证失败', { errors: validation.errors })
-            );
-        }
-
-        // 查找文章文件
-        const draftsDir = path.join(process.cwd(), 'articles', 'drafts');
-        const filePath = path.join(draftsDir, fileName);
-
-        // 检查文件是否存在
-        if (!await fs.pathExists(filePath)) {
+        // 获取现有文章
+        const existingArticle = await articleManager.getArticleById(articleId);
+        if (!existingArticle) {
             return ResponseUtils.vercelResponse(
                 res,
                 404,
@@ -270,33 +215,41 @@ async function handleUpdateArticle(req, res) {
             );
         }
 
-        // 读取原文章数据
-        const originalArticle = await fs.readJson(filePath);
-
-        // 合并更新数据
+        // 合并更新
         const updatedArticle = {
-            ...originalArticle,
-            ...article,
+            ...existingArticle,
+            ...updates,
             updatedAt: new Date().toISOString()
         };
 
-        // 保存更新
-        await fs.writeJson(filePath, updatedArticle, { spaces: 2 });
+        // 验证更新后的文章
+        const validation = ValidationUtils.validateArticle(updatedArticle);
+        if (!validation.isValid) {
+            return ResponseUtils.vercelResponse(
+                res,
+                400,
+                ResponseUtils.error('文章数据验证失败', validation.errors)
+            );
+        }
 
-        logger.info(`文章已更新: ${fileName}`);
+        // 保存更新
+        await articleManager.saveArticle(updatedArticle);
+
+        logger.info(`更新文章: ${updatedArticle.title}`);
 
         return ResponseUtils.vercelResponse(
             res,
             200,
-            ResponseUtils.success(
-                { fileName, article: updatedArticle },
-                '文章更新成功'
-            )
+            ResponseUtils.success(updatedArticle, '文章更新成功')
         );
 
     } catch (error) {
         logger.error('更新文章失败:', error);
-        throw error;
+        return ResponseUtils.vercelResponse(
+            res,
+            500,
+            ResponseUtils.error('更新文章失败', error)
+        );
     }
 }
 
@@ -305,29 +258,19 @@ async function handleUpdateArticle(req, res) {
  */
 async function handleDeleteArticle(req, res) {
     try {
-        const { fileName } = req.body;
+        const { articleId } = req.body;
 
-        if (!fileName) {
+        if (!articleId) {
             return ResponseUtils.vercelResponse(
                 res,
                 400,
-                ResponseUtils.error('缺少文件名')
+                ResponseUtils.error('缺少文章ID')
             );
         }
 
-        // 查找文章文件（先在草稿目录找，再在已发布目录找）
-        const draftsDir = path.join(process.cwd(), 'articles', 'drafts');
-        const publishedDir = path.join(process.cwd(), 'articles', 'published');
-
-        let filePath = path.join(draftsDir, fileName);
-        let found = await fs.pathExists(filePath);
-
-        if (!found) {
-            filePath = path.join(publishedDir, fileName);
-            found = await fs.pathExists(filePath);
-        }
-
-        if (!found) {
+        // 检查文章是否存在
+        const article = await articleManager.getArticleById(articleId);
+        if (!article) {
             return ResponseUtils.vercelResponse(
                 res,
                 404,
@@ -335,19 +278,23 @@ async function handleDeleteArticle(req, res) {
             );
         }
 
-        // 删除文件
-        await fs.remove(filePath);
+        // 删除文章
+        await articleManager.deleteArticle(articleId);
 
-        logger.info(`文章已删除: ${fileName}`);
+        logger.info(`删除文章: ${article.title}`);
 
         return ResponseUtils.vercelResponse(
             res,
             200,
-            ResponseUtils.success(null, '文章删除成功')
+            ResponseUtils.success({ articleId }, '文章删除成功')
         );
 
     } catch (error) {
         logger.error('删除文章失败:', error);
-        throw error;
+        return ResponseUtils.vercelResponse(
+            res,
+            500,
+            ResponseUtils.error('删除文章失败', error)
+        );
     }
 } 

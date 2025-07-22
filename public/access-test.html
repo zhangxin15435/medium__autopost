@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>公开访问测试 - Medium Auto-Post</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+        }
+
+        .test-card {
+            background: white;
+            color: #333;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .status {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status.loading {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 10px 5px;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .result {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>🌐 公开访问测试</h1>
+    <p>此页面用于验证 Medium 自动发布系统的公开访问状态</p>
+
+    <div class="test-card">
+        <h2>✅ 基础访问测试</h2>
+        <p><span class="status success">成功</span> 您能看到这个页面说明基础访问正常！</p>
+        <p><strong>测试结果</strong>: 应用已部署且可公开访问</p>
+    </div>
+
+    <div class="test-card">
+        <h2>🔗 API连通性测试</h2>
+        <p>测试各个API端点的访问情况：</p>
+
+        <button class="btn" onclick="testAPI('/api/articles')">测试文章API</button>
+        <button class="btn" onclick="testAPI('/api/publish', 'POST')">测试发布API</button>
+        <button class="btn" onclick="testMainApp()">访问主应用</button>
+
+        <div id="api-results"></div>
+    </div>
+
+    <div class="test-card">
+        <h2>📱 设备兼容性</h2>
+        <div id="device-info">
+            <p><strong>浏览器</strong>: <span id="browser"></span></p>
+            <p><strong>设备类型</strong>: <span id="device"></span></p>
+            <p><strong>屏幕尺寸</strong>: <span id="screen"></span></p>
+            <p><strong>支持触控</strong>: <span id="touch"></span></p>
+        </div>
+    </div>
+
+    <div class="test-card">
+        <h2>🎯 访问确认</h2>
+        <div class="status success">✅ 完全公开访问</div>
+        <ul>
+            <li>✅ 无需登录Vercel</li>
+            <li>✅ 无需注册账户</li>
+            <li>✅ 可以直接分享链接</li>
+            <li>✅ 支持所有现代浏览器</li>
+            <li>✅ 支持移动设备</li>
+        </ul>
+
+        <h3>🚀 立即开始使用</h3>
+        <button class="btn" onclick="window.location.href='/'">前往主应用</button>
+    </div>
+
+    <script>
+        // 设备信息检测
+        document.addEventListener('DOMContentLoaded', function () {
+            // 浏览器信息
+            const ua = navigator.userAgent;
+            let browser = '未知';
+            if (ua.includes('Chrome')) browser = 'Chrome';
+            else if (ua.includes('Firefox')) browser = 'Firefox';
+            else if (ua.includes('Safari')) browser = 'Safari';
+            else if (ua.includes('Edge')) browser = 'Edge';
+
+            // 设备类型
+            let device = '桌面端';
+            if (/Mobi|Android/i.test(ua)) device = '移动端';
+            else if (/Tablet|iPad/i.test(ua)) device = '平板端';
+
+            // 更新显示
+            document.getElementById('browser').textContent = browser;
+            document.getElementById('device').textContent = device;
+            document.getElementById('screen').textContent = window.screen.width + 'x' + window.screen.height;
+            document.getElementById('touch').textContent = 'ontouchstart' in window ? '是' : '否';
+        });
+
+        // API测试函数
+        async function testAPI(endpoint, method = 'GET') {
+            const resultsDiv = document.getElementById('api-results');
+            const testId = Date.now();
+
+            // 添加测试状态
+            const statusDiv = document.createElement('div');
+            statusDiv.className = 'result';
+            statusDiv.innerHTML = `🔄 测试 ${endpoint} (${method})...`;
+            resultsDiv.appendChild(statusDiv);
+
+            try {
+                const options = {
+                    method: method,
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                };
+
+                // 如果是POST请求，添加测试数据
+                if (method === 'POST') {
+                    options.body = JSON.stringify({
+                        action: 'test'
+                    });
+                }
+
+                const response = await fetch(endpoint, options);
+                const data = await response.json();
+
+                statusDiv.innerHTML = `✅ ${endpoint} - 状态: ${response.status}\n响应: ${JSON.stringify(data, null, 2)}`;
+                statusDiv.style.background = '#d4edda';
+
+            } catch (error) {
+                statusDiv.innerHTML = `❌ ${endpoint} - 错误: ${error.message}`;
+                statusDiv.style.background = '#f8d7da';
+            }
+        }
+
+        // 访问主应用
+        function testMainApp() {
+            window.open('/', '_blank');
+        }
+
+        // 显示当前时间
+        function updateTime() {
+            const now = new Date();
+            document.title = `公开访问测试 - ${now.toLocaleTimeString()}`;
+        }
+
+        setInterval(updateTime, 1000);
+        updateTime();
+    </script>
+</body>
+
+</html>

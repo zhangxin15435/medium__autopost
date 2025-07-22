@@ -51,6 +51,15 @@ class BatchUploadAPI {
     }
 
     /**
+     * 设置CORS头
+     */
+    setCorsHeaders(res) {
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+        res.setHeader('Access-Control-Allow-Headers', 'Content-Type, X-API-Key');
+    }
+
+    /**
      * 处理表格文件上传
      */
     async handleUpload(req, res) {
