@@ -7,30 +7,69 @@ const { logger } = require('../lib/utils');
 // 配置文件上传
 const storage = multer.diskStorage({
     destination: async (req, file, cb) => {
-        const uploadDir = path.join(process.cwd(), 'uploads');
-        await fs.ensureDir(uploadDir);
-        cb(null, uploadDir);
+        try {
+            const uploadDir = path.join(process.cwd(), 'uploads');
+            await fs.ensureDir(uploadDir);
+            logger.info(`创建上传目录: ${uploadDir}`);
+            cb(null, uploadDir);
+        } catch (error) {
+            logger.error('创建上传目录失败:', error);
+            cb(error);
+        }
     },
     filename: (req, file, cb) => {
-        // 生成唯一文件名
-        const timestamp = Date.now();
-        const originalName = Buffer.from(file.originalname, 'latin1').toString('utf8');
-        const ext = path.extname(originalName);
-        const name = path.basename(originalName, ext);
-        cb(null, `${name}_${timestamp}${ext}`);
+        try {
+            // 生成唯一文件名
+            const timestamp = Date.now();
+            // 处理文件名编码
+            let originalName = file.originalname;
+            try {
+                originalName = Buffer.from(file.originalname, 'latin1').toString('utf8');
+            } catch (e) {
+                logger.warn('文件名编码转换失败:', e);
+            }
+
+            const ext = path.extname(originalName).toLowerCase();
+            const name = path.basename(originalName, ext);
+            const filename = `${name}_${timestamp}${ext}`;
+
+            logger.info(`生成文件名: ${filename}`);
+            cb(null, filename);
+        } catch (error) {
+            logger.error('生成文件名失败:', error);
+            cb(error);
+        }
     }
 });
 
 const upload = multer({
     storage: storage,
     fileFilter: (req, file, cb) => {
-        const allowedExtensions = ['.csv', '.xlsx', '.xls'];
-        const ext = path.extname(file.originalname).toLowerCase();
+        try {
+            logger.info(`接收到文件: ${file.originalname}, MIME类型: ${file.mimetype}`);
 
-        if (allowedExtensions.includes(ext)) {
-            cb(null, true);
-        } else {
-            cb(new Error(`不支持的文件格式: ${ext}。支持的格式: ${allowedExtensions.join(', ')}`));
+            // 从文件名获取扩展名
+            let ext = path.extname(file.originalname).toLowerCase();
+            if (!ext && file.mimetype) {
+                // 从MIME类型推断扩展名
+                if (file.mimetype === 'text/csv') ext = '.csv';
+                else if (file.mimetype === 'application/vnd.ms-excel') ext = '.xls';
+                else if (file.mimetype === 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet') ext = '.xlsx';
+            }
+
+            const allowedExtensions = ['.csv', '.xlsx', '.xls'];
+            logger.info(`文件扩展名: ${ext}`);
+
+            if (allowedExtensions.includes(ext)) {
+                logger.info('文件格式有效');
+                cb(null, true);
+            } else {
+                logger.warn(`不支持的文件格式: ${ext}`);
+                cb(new Error(`不支持的文件格式: ${ext}。支持的格式: ${allowedExtensions.join(', ')}`));
+            }
+        } catch (error) {
+            logger.error('文件过滤器错误:', error);
+            cb(error);
         }
     },
     limits: {
@@ -64,7 +103,14 @@ class BatchUploadAPI {
      */
     async handleUpload(req, res) {
         try {
+            // 设置CORS头
+            this.setCorsHeaders(res);
+
+            logger.info('接收到文件上传请求');
+            logger.info('请求体:', req.body);
+
             if (!req.file) {
+                logger.error('没有接收到文件');
                 return res.status(400).json({
                     success: false,
                     error: '请选择要上传的表格文件'
@@ -74,7 +120,8 @@ class BatchUploadAPI {
             const filePath = req.file.path;
             const originalName = Buffer.from(req.file.originalname, 'latin1').toString('utf8');
 
-            logger.info(`接收到上传文件: ${originalName}`);
+            logger.info(`接收到上传文件: ${originalName} (${req.file.size} 字节)`);
+            logger.info(`文件保存路径: ${filePath}`);
 
             // 预览表格内容
             try {
@@ -106,10 +153,10 @@ class BatchUploadAPI {
                 });
             } catch (previewError) {
                 logger.error('预览文件内容失败:', previewError);
-                
+
                 // 删除上传的文件
                 await fs.remove(filePath);
-                
+
                 return res.status(400).json({
                     success: false,
                     error: '预览文件内容失败: ' + previewError.message

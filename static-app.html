@@ -577,18 +577,32 @@
 
                 console.log('开始上传文件到服务器:', currentFile.name);
 
+                console.log('发送上传请求...');
                 const response = await fetch('/api/batch-upload', {
                     method: 'POST',
                     body: formData
                 });
 
+                console.log('收到服务器响应:', response.status);
+
+                // 获取响应文本，不管成功还是失败
+                const responseText = await response.text();
+                console.log('响应内容:', responseText);
+
                 if (!response.ok) {
-                    const errorText = await response.text();
-                    console.error('上传失败:', response.status, errorText);
-                    throw new Error(`服务器错误 (${response.status}): ${errorText}`);
+                    console.error('上传失败:', response.status, responseText);
+                    throw new Error(`服务器错误 (${response.status}): ${responseText}`);
                 }
 
-                const result = await response.json();
+                // 解析JSON响应
+                let result;
+                try {
+                    result = JSON.parse(responseText);
+                    console.log('解析后的响应:', result);
+                } catch (parseError) {
+                    console.error('JSON解析错误:', parseError);
+                    throw new Error('无法解析服务器响应: ' + responseText);
+                }
 
                 if (result.success) {
                     showNotification(`文件上传成功: ${currentFile.name}`, 'success');
