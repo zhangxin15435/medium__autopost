@@ -413,6 +413,19 @@
             margin-top: 20px;
             gap: 10px;
         }
+
+        /* 结果框样式 */
+        .result-box {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: monospace;
+            white-space: pre-wrap;
+            max-height: 300px;
+            overflow-y: auto;
+        }
     </style>
 </head>
 
@@ -533,6 +546,12 @@
             <div id="articles-container" class="articles-grid">
                 <!-- 文章列表将在这里显示 -->
             </div>
+        </div>
+
+        <!-- 结果显示 -->
+        <div class="card" id="resultCard" style="display: none;">
+            <h2>📋 处理结果</h2>
+            <div id="resultContent" class="result-box"></div>
         </div>
     </div>
 
@@ -1224,6 +1243,20 @@
             setTimeout(() => {
                 notification.classList.remove('show');
             }, 3000);
+        }
+
+        // 显示结果
+        function showResult(content) {
+            const resultCard = document.getElementById('resultCard');
+            const resultContent = document.getElementById('resultContent');
+
+            if (resultCard && resultContent) {
+                resultContent.textContent = content;
+                resultCard.style.display = 'block';
+                resultCard.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                console.log('结果内容:', content);
+            }
         }
     </script>
 </body>
