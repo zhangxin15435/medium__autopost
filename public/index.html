@@ -612,7 +612,7 @@
 
             try {
                 const formData = new FormData();
-                formData.append('file', currentFile);
+                formData.append('table', currentFile); // 修正字段名为'table'，与后端API匹配
                 formData.append('enhanceWithAI', document.getElementById('enhanceWithAI').checked);
 
                 const response = await fetch('/api/batch-upload', {

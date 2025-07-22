@@ -390,12 +390,19 @@
                             <p style="color: #666; font-size: 14px; margin-top: 10px;">
                                 支持 CSV, Excel (.xlsx) 格式
                             </p>
+                            <div style="margin-top: 10px;">
+                                <input type="checkbox" id="enhanceAI" checked>
+                                <label for="enhanceAI">使用 AI 增强文章内容</label>
+                            </div>
                             <input type="file" id="fileInput" accept=".csv,.xlsx" style="display: none;">
                         </div>
                     </div>
 
                     <button class="btn" id="processBtn" disabled onclick="processFile()">
                         🔄 处理文件
+                    </button>
+                    <button class="btn" id="uploadBtn" disabled onclick="uploadToServer()">
+                        📤 上传到服务器
                     </button>
                     <button class="btn" id="batchPublishBtn" disabled onclick="batchPublishArticles()">
                         🚀 批量发布到Medium
@@ -524,6 +531,7 @@
 
             currentFile = file;
             document.getElementById('processBtn').disabled = false;
+            document.getElementById('uploadBtn').disabled = false;
 
             const fileUpload = document.getElementById('fileUpload');
             fileUpload.innerHTML = `
@@ -542,6 +550,7 @@
         function clearFile() {
             currentFile = null;
             document.getElementById('processBtn').disabled = true;
+            document.getElementById('uploadBtn').disabled = true;
             document.getElementById('fileUpload').innerHTML = `
                 <div>
                     <p>📄 拖拽文件到这里或点击选择</p>
@@ -550,6 +559,51 @@
                     </p>
                 </div>
             `;
+        }
+
+        // 上传文件到服务器
+        async function uploadToServer() {
+            if (!currentFile) return;
+
+            const btn = document.getElementById('uploadBtn');
+            const originalText = btn.innerHTML;
+            btn.disabled = true;
+            btn.innerHTML = '<span class="loading"></span> 上传中...';
+
+            try {
+                const formData = new FormData();
+                formData.append('table', currentFile); // 使用'table'字段名，与API匹配
+                formData.append('enhanceWithAI', document.getElementById('enhanceAI')?.checked || false);
+
+                console.log('开始上传文件到服务器:', currentFile.name);
+
+                const response = await fetch('/api/batch-upload', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    console.error('上传失败:', response.status, errorText);
+                    throw new Error(`服务器错误 (${response.status}): ${errorText}`);
+                }
+
+                const result = await response.json();
+
+                if (result.success) {
+                    showNotification(`文件上传成功: ${currentFile.name}`, 'success');
+                    showResult(`上传成功! 文件: ${currentFile.name}\n\n${JSON.stringify(result.data, null, 2)}`);
+                    clearFile();
+                } else {
+                    throw new Error(result.error || '上传失败，服务器未返回错误详情');
+                }
+            } catch (error) {
+                console.error('上传错误:', error);
+                showNotification('上传失败: ' + error.message, 'error');
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = originalText;
+            }
         }
 
         // 处理文件
@@ -576,6 +630,8 @@
                     }
 
                     // 检查是否是特殊格式的内容库文件
+                    // 获取数据中的标题行
+                    const headers = Object.keys(data[0] || {});
                     const isContentLibraryFile =
                         headers.includes('主题') &&
                         headers.includes('发布') &&
