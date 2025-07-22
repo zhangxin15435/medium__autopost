@@ -52,10 +52,26 @@ module.exports = async (req, res) => {
             logger.info(`接收到上传文件: ${req.file.originalname} (${req.file.size} 字节)`);
             logger.info(`文件MIME类型: ${req.file.mimetype}`);
 
-            // 简单返回文件信息，不进行实际处理
+            // 解析文件内容以获取大致的文章数量
+            let articlesCount = 1; // 默认至少有1篇文章
+
+            try {
+                // 如果是CSV文件，尝试计算行数来估算文章数量
+                if (req.file.mimetype === 'text/csv' || req.file.originalname.endsWith('.csv')) {
+                    const content = req.file.buffer.toString('utf8');
+                    const lines = content.split('\n').filter(line => line.trim().length > 0);
+                    // 减去标题行
+                    articlesCount = Math.max(1, lines.length - 1);
+                }
+            } catch (e) {
+                logger.warn('无法计算文章数量:', e);
+            }
+
+            // 返回成功信息，包含文章数量
             return res.status(200).json({
                 success: true,
                 message: '文件上传成功',
+                articlesCount: articlesCount,
                 file: {
                     originalname: req.file.originalname,
                     mimetype: req.file.mimetype,

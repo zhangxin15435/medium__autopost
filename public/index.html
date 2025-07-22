@@ -624,7 +624,14 @@
                 const result = await response.json();
 
                 if (result.success) {
-                    showNotification(`成功上传 ${result.articlesCount} 篇文章！`, 'success');
+                    const count = result.articlesCount || 1;
+                    const fileName = result.file?.originalname || currentFile.name;
+                    showNotification(`成功上传 ${count} 篇文章！`, 'success');
+                    console.log('上传成功:', result);
+
+                    // 显示更详细的信息
+                    showResult(`文件 "${fileName}" 上传成功！\n包含 ${count} 篇文章。\n\n文件大小: ${result.file?.size || currentFile.size} 字节`);
+
                     clearFile();
                     loadArticles();
                     updateStatus();
