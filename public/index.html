@@ -615,7 +615,8 @@
                 formData.append('table', currentFile); // 修正字段名为'table'，与后端API匹配
                 formData.append('enhanceWithAI', document.getElementById('enhanceWithAI').checked);
 
-                const response = await fetch('/api/batch-upload', {
+                // 使用简化版API端点
+                const response = await fetch('/api/simple-upload', {
                     method: 'POST',
                     body: formData
                 });

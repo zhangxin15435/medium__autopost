@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,16 +12,20 @@
             margin: 0 auto;
             padding: 20px;
         }
+
         h1 {
             color: #333;
         }
+
         .form-group {
             margin-bottom: 20px;
         }
+
         label {
             display: block;
             margin-bottom: 5px;
         }
+
         button {
             padding: 10px 15px;
             background-color: #4CAF50;
@@ -28,9 +33,11 @@
             border: none;
             cursor: pointer;
         }
+
         button:hover {
             background-color: #45a049;
         }
+
         #result {
             margin-top: 20px;
             padding: 15px;
@@ -40,63 +47,65 @@
         }
     </style>
 </head>
+
 <body>
     <h1>文件上传测试</h1>
-    
+
     <div class="form-group">
         <label for="file">选择CSV文件:</label>
         <input type="file" id="file" accept=".csv,.xlsx">
     </div>
-    
+
     <div class="form-group">
         <label>
             <input type="checkbox" id="enhanceWithAI" checked>
             使用AI增强文章内容
         </label>
     </div>
-    
+
     <button onclick="uploadFile()">上传文件</button>
-    
+
     <div id="result"></div>
-    
+
     <script>
         async function uploadFile() {
             const fileInput = document.getElementById('file');
             const enhanceWithAI = document.getElementById('enhanceWithAI').checked;
             const resultDiv = document.getElementById('result');
-            
+
             if (!fileInput.files || fileInput.files.length === 0) {
                 resultDiv.textContent = '请选择文件';
                 return;
             }
-            
+
             const file = fileInput.files[0];
             resultDiv.textContent = `准备上传文件: ${file.name} (${file.size} 字节)`;
-            
+
             try {
                 // 创建FormData
                 const formData = new FormData();
                 formData.append('table', file);
                 formData.append('enhanceWithAI', enhanceWithAI);
-                
+
                 // 发送请求
                 resultDiv.textContent += '\n发送上传请求...';
-                
-                const response = await fetch('/api/batch-upload', {
+
+                // 使用简化版API端点
+                const response = await fetch('/api/simple-upload', {
                     method: 'POST',
                     body: formData
                 });
-                
+
                 resultDiv.textContent += `\n收到响应: ${response.status} ${response.statusText}`;
-                
+
                 // 获取响应内容
                 const responseText = await response.text();
-                
+
                 try {
                     // 尝试解析JSON
                     const result = JSON.parse(responseText);
                     resultDiv.textContent += '\n\n响应内容 (JSON):\n' + JSON.stringify(result, null, 2);
-                    
+
                     if (result.success) {
                         resultDiv.textContent += '\n\n✅ 上传成功!';
                     } else {
@@ -113,4 +122,5 @@
         }
     </script>
 </body>
-</html> 
+
+</html>
