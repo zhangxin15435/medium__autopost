@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简单文件上传测试</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>简单文件上传测试</h1>
+
+    <div class="form-group">
+        <label for="file">选择CSV文件:</label>
+        <input type="file" id="file" accept=".csv,.xlsx">
+    </div>
+
+    <button onclick="uploadFile()">上传文件</button>
+    <button onclick="testApi()">测试API连接</button>
+
+    <div id="result"></div>
+
+    <script>
+        async function uploadFile() {
+            const fileInput = document.getElementById('file');
+            const resultDiv = document.getElementById('result');
+
+            if (!fileInput.files || fileInput.files.length === 0) {
+                resultDiv.textContent = '请选择文件';
+                return;
+            }
+
+            const file = fileInput.files[0];
+            resultDiv.textContent = `准备上传文件: ${file.name} (${file.size} 字节)`;
+
+            try {
+                // 创建FormData
+                const formData = new FormData();
+                formData.append('table', file);
+
+                // 发送请求
+                resultDiv.textContent += '\n发送上传请求...';
+
+                const response = await fetch('/api/simple-upload', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                resultDiv.textContent += `\n收到响应: ${response.status} ${response.statusText}`;
+
+                // 获取响应内容
+                const responseText = await response.text();
+
+                try {
+                    // 尝试解析JSON
+                    const result = JSON.parse(responseText);
+                    resultDiv.textContent += '\n\n响应内容 (JSON):\n' + JSON.stringify(result, null, 2);
+
+                    if (result.success) {
+                        resultDiv.textContent += '\n\n✅ 上传成功!';
+                    } else {
+                        resultDiv.textContent += '\n\n❌ 上传失败: ' + (result.error || '未知错误');
+                    }
+                } catch (parseError) {
+                    // 无法解析为JSON，显示原始文本
+                    resultDiv.textContent += '\n\n响应内容 (文本):\n' + responseText;
+                    resultDiv.textContent += '\n\n❌ 无法解析响应为JSON: ' + parseError.message;
+                }
+            } catch (error) {
+                resultDiv.textContent += '\n\n❌ 上传错误: ' + error.message;
+            }
+        }
+
+        async function testApi() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.textContent = '测试API连接...';
+
+            try {
+                const response = await fetch('/api/simple-upload', {
+                    method: 'OPTIONS'
+                });
+
+                resultDiv.textContent += `\n收到响应: ${response.status} ${response.statusText}`;
+
+                if (response.ok) {
+                    resultDiv.textContent += '\n\n✅ API连接正常!';
+                } else {
+                    resultDiv.textContent += '\n\n❌ API连接失败!';
+                }
+            } catch (error) {
+                resultDiv.textContent += '\n\n❌ API连接错误: ' + error.message;
+            }
+        }
+    </script>
+</body>
+
+</html>

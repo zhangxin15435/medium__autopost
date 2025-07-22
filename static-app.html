@@ -578,7 +578,8 @@
                 console.log('开始上传文件到服务器:', currentFile.name);
 
                 console.log('发送上传请求...');
-                const response = await fetch('/api/batch-upload', {
+                // 使用简化版API端点
+                const response = await fetch('/api/simple-upload', {
                     method: 'POST',
                     body: formData
                 });
