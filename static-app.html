@@ -559,21 +559,57 @@
             const reader = new FileReader();
             reader.onload = function (e) {
                 try {
+                    // 显示原始文件内容以便调试
+                    console.log('文件内容:', e.target.result.substring(0, 500) + '...');
+
                     let data;
                     if (currentFile.name.endsWith('.csv')) {
+                        // 检测文件编码
+                        const encoding = detectEncoding(e.target.result);
+                        console.log('检测到文件编码:', encoding);
+
                         data = parseCSV(e.target.result);
+                        console.log('解析后的数据:', data.slice(0, 2));
                     } else {
                         showNotification('Excel文件需要专门的解析库，请使用CSV格式', 'error');
                         return;
                     }
 
+                    // 检查是否是特殊格式的内容库文件
+                    const isContentLibraryFile =
+                        headers.includes('主题') &&
+                        headers.includes('发布') &&
+                        headers.includes('提出人') &&
+                        headers.includes('发布内容');
+
+                    console.log('是否为内容库格式:', isContentLibraryFile);
+                    console.log('检测到的标题:', headers);
+
                     // 转换为文章格式，支持多种CSV格式
                     const importedArticles = data.map((row, index) => {
                         // 尝试识别不同的列名格式
-                        const title = row.title || row['标题'] || row['主题'] || `导入文章${index + 1}`;
+                        let title, content, tagsField;
+
+                        if (isContentLibraryFile) {
+                            // 特殊处理内容库格式
+                            title = row['主题'] || `导入文章${index + 1}`;
+                            content = row['发布内容'] || row['markdown格式文本'] || '';
+                            tagsField = row['标签'] || '';
+
+                            // 调试输出
+                            console.log(`处理第${index + 1}行:`, {
+                                title: title.substring(0, 30) + '...',
+                                contentLength: content.length,
+                                tags: tagsField
+                            });
+                        } else {
+                            // 标准格式处理
+                            title = row.title || row['标题'] || row['主题'] || `导入文章${index + 1}`;
+                            content = row.content || row['内容'] || row['发布内容'] || row['markdown格式文本'] || '';
+                            tagsField = row.tags || row['标签'] || '';
+                        }
+
                         const subtitle = row.subtitle || row['副标题'] || '';
-                        const content = row.content || row['内容'] || row['发布内容'] || row['markdown格式文本'] || '';
-                        const tagsField = row.tags || row['标签'] || '';
 
                         return {
                             id: Date.now() + index,
@@ -601,23 +637,103 @@
                     showResult(`成功导入 ${importedArticles.length} 篇文章：\n\n${importedArticles.map(a => `- ${a.title}`).join('\n')}`);
 
                 } catch (error) {
-                    showNotification('文件解析失败: ' + error.message, 'error');
+                    console.error('文件解析错误:', error);
+                    // 显示更详细的错误信息
+                    showNotification('文件解析失败: ' + error.message + '。请检查文件格式是否正确，或尝试另存为UTF-8编码的CSV文件。', 'error');
+
+                    // 尝试显示部分文件内容以便调试
+                    try {
+                        const content = e.target.result.substring(0, 200);
+                        showResult(`解析失败。文件前200个字符:\n${content}`);
+                    } catch (e) {
+                        showResult('无法显示文件内容');
+                    }
                 }
             };
 
-            reader.readAsText(currentFile);
+            // 尝试使用不同的编码读取文件
+            try {
+                // 首先尝试使用UTF-8读取
+                reader.readAsText(currentFile, 'UTF-8');
+            } catch (e) {
+                console.error('UTF-8读取失败，尝试其他编码', e);
+                try {
+                    // 如果失败，尝试使用GBK/GB18030读取（常见中文编码）
+                    reader.readAsText(currentFile, 'GBK');
+                } catch (e2) {
+                    // 最后回退到默认编码
+                    reader.readAsText(currentFile);
+                }
+            }
         }
 
-        // 改进的CSV解析器，支持包含逗号和引号的内容
-        function parseCSV(csvText) {
-            const lines = csvText.split('\n').filter(line => line.trim());
-            if (lines.length < 2) throw new Error('CSV文件格式不正确');
+        // 检测文本编码
+        function detectEncoding(text) {
+            // 检查是否有BOM标记
+            if (text.charCodeAt(0) === 0xFEFF) {
+                return 'UTF-8 with BOM';
+            }
 
-            // 解析CSV行，处理引号内的逗号
+            // 检查是否有常见的中文字符
+            const hasChineseChars = /[\u4E00-\u9FFF]/.test(text);
+
+            // 检查是否有可能的编码问题（乱码特征）
+            const hasPossibleEncodingIssues = /[\uFFFD\u0000-\u0008\u000B-\u000C\u000E-\u001F]/.test(text);
+
+            if (hasChineseChars && !hasPossibleEncodingIssues) {
+                return 'UTF-8 (正常)';
+            } else if (hasChineseChars && hasPossibleEncodingIssues) {
+                return '可能存在编码问题';
+            } else {
+                return 'ASCII或其他编码';
+            }
+        }
+
+        // 超级增强版CSV解析器，支持各种格式和编码问题
+        function parseCSV(csvText) {
+            console.log('开始解析CSV...');
+
+            // 处理可能的BOM
+            if (csvText.charCodeAt(0) === 0xFEFF) {
+                csvText = csvText.slice(1);
+            }
+
+            // 处理不同的行结束符
+            csvText = csvText.replace(/\r\n|\r/g, '\n');
+
+            const lines = csvText.split('\n').filter(line => line.trim());
+            console.log(`CSV共有 ${lines.length} 行数据`);
+
+            if (lines.length < 1) throw new Error('CSV文件为空');
+
+            // 尝试检测分隔符
+            const firstLine = lines[0];
+            let separator = ',';
+            const commaCount = (firstLine.match(/,/g) || []).length;
+            const tabCount = (firstLine.match(/\t/g) || []).length;
+            const semicolonCount = (firstLine.match(/;/g) || []).length;
+
+            if (tabCount > commaCount && tabCount > semicolonCount) {
+                separator = '\t';
+                console.log('检测到制表符分隔的CSV');
+            } else if (semicolonCount > commaCount && semicolonCount > tabCount) {
+                separator = ';';
+                console.log('检测到分号分隔的CSV');
+            } else {
+                console.log('使用默认逗号分隔符');
+            }
+
+            // 超级解析CSV行，处理各种边缘情况
             function parseCSVLine(line) {
                 const result = [];
                 let current = '';
                 let inQuotes = false;
+                let lastNonSpaceChar = '';
+
+                // 处理空行
+                if (!line.trim()) {
+                    return [];
+                }
 
                 for (let i = 0; i < line.length; i++) {
                     const char = line[i];
@@ -628,16 +744,26 @@
                             // 转义的引号
                             current += '"';
                             i++; // 跳过下一个引号
+                        } else if (inQuotes && (nextChar === separator || nextChar === undefined || nextChar === '\r' || nextChar === '\n')) {
+                            // 引号结束，后面是分隔符或行尾
+                            inQuotes = false;
+                        } else if (!inQuotes && (lastNonSpaceChar === '' || lastNonSpaceChar === separator)) {
+                            // 引号开始，前面是行首或分隔符
+                            inQuotes = true;
                         } else {
-                            // 切换引号状态
-                            inQuotes = !inQuotes;
+                            // 字段中的引号
+                            current += char;
                         }
-                    } else if (char === ',' && !inQuotes) {
+                    } else if ((char === separator) && !inQuotes) {
                         // 字段分隔符
                         result.push(current.trim());
                         current = '';
+                        lastNonSpaceChar = separator;
                     } else {
                         current += char;
+                        if (char.trim() !== '') {
+                            lastNonSpaceChar = char;
+                        }
                     }
                 }
 
@@ -648,6 +774,7 @@
             }
 
             const headers = parseCSVLine(lines[0]);
+            console.log('识别到的标题行:', headers);
             const data = [];
 
             for (let i = 1; i < lines.length; i++) {
