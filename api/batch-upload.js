@@ -77,28 +77,44 @@ class BatchUploadAPI {
             logger.info(`接收到上传文件: ${originalName}`);
 
             // 预览表格内容
-            const preview = await this.batchPublisher.previewTable(filePath);
+            try {
+                const preview = await this.batchPublisher.previewTable(filePath);
 
-            if (!preview.success) {
+                if (!preview.success) {
+                    // 删除上传的文件
+                    await fs.remove(filePath);
+                    return res.status(400).json({
+                        success: false,
+                        error: preview.error || '无法预览文件内容'
+                    });
+                }
+
+                // 计算文章数量
+                const articlesCount = preview.data?.rows?.length || 0;
+
+                res.json({
+                    success: true,
+                    message: '文件上传成功',
+                    articlesCount: articlesCount, // 添加文章数量
+                    data: {
+                        filePath: filePath,
+                        originalName: originalName,
+                        fileSize: req.file.size,
+                        uploadTime: new Date().toISOString(),
+                        preview: preview
+                    }
+                });
+            } catch (previewError) {
+                logger.error('预览文件内容失败:', previewError);
+                
                 // 删除上传的文件
                 await fs.remove(filePath);
+                
                 return res.status(400).json({
                     success: false,
-                    error: preview.error
+                    error: '预览文件内容失败: ' + previewError.message
                 });
             }
-
-            res.json({
-                success: true,
-                message: '文件上传成功',
-                data: {
-                    filePath: filePath,
-                    originalName: originalName,
-                    fileSize: req.file.size,
-                    uploadTime: new Date().toISOString(),
-                    preview: preview
-                }
-            });
 
         } catch (error) {
             logger.error('文件上传处理失败:', error);
